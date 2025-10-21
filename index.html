@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZaraAI | Complete Unified System</title>
     <style>
-        /* [ALL YOUR EXISTING CSS STYLES REMAIN THE SAME] */
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
@@ -57,7 +56,326 @@
             min-height: 100vh;
         }
 
-        /* [ALL YOUR EXISTING CSS REMAINS THE SAME - I'm just showing the chat-specific fixes] */
+        /* Sidebar Styles */
+        .sidebar {
+            width: 260px;
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding: 0 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .brain-logo {
+            font-size: 1.5rem;
+            transform: rotate(0deg);
+            display: inline-block;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+            padding: 0 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0.5rem;
+            border-radius: var(--border-radius);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            margin-bottom: 0.25rem;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .nav-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-badge {
+            margin-left: auto;
+            background-color: var(--success);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 20px;
+        }
+
+        .user-profile {
+            margin-top: auto;
+            padding: 1rem 0.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .user-info {
+            flex: 1;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .user-role {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 260px;
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--text-primary);
+        }
+
+        .admin-badge {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Dashboard Cards */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .card-content {
+            margin-bottom: 1rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.5s ease;
+        }
+
+        /* Phase Completion Styles */
+        .phase-completion {
+            margin-bottom: 2rem;
+        }
+
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .phase-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phase-card.completed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--success);
+        }
+
+        .phase-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .phase-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-status {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .status-completed {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
 
         /* Chat Interface */
         .chat-container {
@@ -170,18 +488,322 @@
             background-color: var(--primary-dark);
         }
 
-        /* [REST OF YOUR CSS REMAINS THE SAME] */
+        /* Autonomous Status */
+        .autonomous-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        /* Rating System */
+        .rating-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .star-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--gray-light);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .star-btn:hover {
+            color: var(--warning);
+            transform: scale(1.1);
+        }
+
+        .star-btn.active {
+            color: var(--warning);
+        }
+
+        .star-label {
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 0.25rem;
+            color: var(--text-secondary);
+        }
+
+        .rating-comment {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            margin: 1rem 0;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .submit-rating {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .submit-rating:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .rating-feedback {
+            text-align: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+        }
+
+        .rating-feedback.submitted {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+        }
+
+        .rating-feedback.thank-you {
+            background-color: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .sidebar {
+                width: 80px;
+                padding: 1rem 0.5rem;
+            }
+            
+            .logo-text, .nav-title, .nav-text, .user-info {
+                display: none;
+            }
+            
+            .main-content {
+                margin-left: 80px;
+            }
+            
+            .nav-item {
+                justify-content: center;
+                padding: 0.75rem;
+            }
+            
+            .user-profile {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .phase-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .phase-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Table Styles */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .table th, .table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .table th {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 101;
+        }
+
+        @media (max-width: 640px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body class="dark-mode">
-    <!-- [YOUR EXISTING HTML STRUCTURE REMAINS THE SAME] -->
     <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
     
     <div class="container">
         <!-- Sidebar Navigation -->
         <div class="sidebar" id="sidebar">
             <div class="logo">
-                <div class="logo-icon">Z</div>
+                <div class="logo-icon">
+                    <div class="brain-logo">🧠</div>
+                </div>
                 <div class="logo-text">ZaraAI</div>
             </div>
             
@@ -230,8 +852,12 @@
                     <div class="nav-text">Security Center</div>
                 </div>
                 <div class="nav-item" data-section="coaching">
-                    <div class="nav-icon">🧠</div>
+                    <div class="nav-icon">🌟</div>
                     <div class="nav-text">Life Coaching</div>
+                </div>
+                <div class="nav-item" data-section="rating">
+                    <div class="nav-icon">⭐</div>
+                    <div class="nav-text">App Rating</div>
                 </div>
             </div>
             
@@ -250,16 +876,370 @@
                 <h1 class="page-title" id="pageTitle">ZaraAI Dashboard</h1>
                 <div class="header-actions">
                     <button class="theme-toggle" id="themeToggle">🌙</button>
-                    <div class="admin-badge">ADMINISTRATOR</div>
+                    <div class="admin-badge">ADMINISTRATOR: MJ MASHIFANE</div>
                 </div>
             </div>
             
             <!-- Dashboard Section -->
             <div class="section active" id="dashboard">
-                <!-- [YOUR DASHBOARD CONTENT] -->
+                <div class="autonomous-status">
+                    <div class="status-indicator"></div>
+                    <div>Autonomous Engine: ACTIVE • Automation Level: 78% • AI Accuracy: 96.2%</div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">89+</div>
+                        <div class="stat-label">Actions Taken</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">96.2%</div>
+                        <div class="stat-label">AI Accuracy</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">78%</div>
+                        <div class="stat-label">Automation Level</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Active Tenants</div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Security Status</div>
+                            <div class="card-icon" style="background-color: var(--success);">🛡️</div>
+                        </div>
+                        <div class="card-content">
+                            <p>All systems secure. No active threats detected.</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%; background-color: var(--success);"></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span>Last scan: 2 minutes ago</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Quantum Readiness</div>
+                            <div class="card-icon" style="background-color: var(--warning);">🔐</div>
+                        </div>
+                        <div class="card-content">
+                            <p>78% overall quantum readiness achieved.</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%; background-color: var(--warning);"></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span>8,400+ quantum-safe keys</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Ecosystem Health</div>
+                            <div class="card-icon" style="background-color: var(--primary);">🌐</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Marketplace active with 127 applications.</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%; background-color: var(--primary);"></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span>15.2K users, $42.8K monthly revenue</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">AI Performance</div>
+                            <div class="card-icon" style="background-color: var(--secondary);">🧠</div>
+                        </div>
+                        <div class="card-content">
+                            <p>12 ML models active with 96.2% accuracy.</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 96.2%; background-color: var(--secondary);"></div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span>Self-learning capabilities active</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Recent Activity</div>
+                    </div>
+                    <div class="card-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Action</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2 min ago</td>
+                                    <td>Security scan completed</td>
+                                    <td><span style="color: var(--success);">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>5 min ago</td>
+                                    <td>Predictive intelligence update</td>
+                                    <td><span style="color: var(--success);">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>8 min ago</td>
+                                    <td>QKD key rotation</td>
+                                    <td><span style="color: var(--success);">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>12 min ago</td>
+                                    <td>Threat analysis completed</td>
+                                    <td><span style="color: var(--success);">Success</span></td>
+                                </tr>
+                                <tr>
+                                    <td>15 min ago</td>
+                                    <td>Wellness check completed</td>
+                                    <td><span style="color: var(--success);">Success</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
             
-            <!-- ZaraAI Chat Section - UPDATED FOR GITHUB COMPATIBILITY -->
+            <!-- Autonomous Engine Section -->
+            <div class="section" id="autonomous">
+                <h2 class="page-title">Autonomous Engine</h2>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Autonomous Operations</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="autonomous-status">
+                            <div class="status-indicator"></div>
+                            <div>Autonomous Mode: ACTIVE • Automation Level: 78%</div>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-value">89+</div>
+                                <div class="stat-label">Actions Taken</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">6</div>
+                                <div class="stat-label">Connected Systems</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">96.2%</div>
+                                <div class="stat-label">AI Accuracy</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-value">0</div>
+                                <div class="stat-label">Manual Interventions</div>
+                            </div>
+                        </div>
+                        
+                        <h3 style="margin: 1.5rem 0 1rem;">Active Operations</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Operation</th>
+                                    <th>Frequency</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Security Scans</td>
+                                    <td>Every 2 minutes</td>
+                                    <td><span style="color: var(--success);">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Threat Analysis</td>
+                                    <td>Every 1.5 minutes</td>
+                                    <td><span style="color: var(--success);">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Wellness Checks</td>
+                                    <td>Every 3 minutes</td>
+                                    <td><span style="color: var(--success);">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Predictive Updates</td>
+                                    <td>Every 5 minutes</td>
+                                    <td><span style="color: var(--success);">Active</span></td>
+                                </tr>
+                                <tr>
+                                    <td>QKD Operations</td>
+                                    <td>Every 2 minutes</td>
+                                    <td><span style="color: var(--success);">Active</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Ecosystem Integration</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Connected to 6 active systems:</p>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>DefendIQ Security Platform</li>
+                                <li>SIEM Analytics</li>
+                                <li>Firewall Management</li>
+                                <li>Identity & Access Management</li>
+                                <li>Quantum Key Distribution</li>
+                                <li>Marketplace Ecosystem</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Quick Actions</div>
+                        </div>
+                        <div class="card-content">
+                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                                <button class="btn btn-primary">Run Security Scan</button>
+                                <button class="btn btn-secondary">Update Threat Intelligence</button>
+                                <button class="btn btn-secondary">Generate Compliance Report</button>
+                                <button class="btn btn-secondary">Optimize AI Models</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phase Completion Section -->
+            <div class="section" id="phases">
+                <h2 class="page-title">Phase Completion Status</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">All 8 development phases completed successfully</p>
+                
+                <div class="phase-grid">
+                    <div class="phase-card completed">
+                        <div class="phase-number">1</div>
+                        <div class="phase-name">Foundation</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">2</div>
+                        <div class="phase-name">Smart Integration</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">3</div>
+                        <div class="phase-name">Advanced Intelligence</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">4</div>
+                        <div class="phase-name">Autonomous Core</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">5</div>
+                        <div class="phase-name">Enterprise Scalability</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">6</div>
+                        <div class="phase-name">AI Advancement</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">7</div>
+                        <div class="phase-name">Ecosystem Expansion</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">8</div>
+                        <div class="phase-name">Quantum Readiness</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 2rem;">
+                    <div class="card-header">
+                        <div class="card-title">Phase Completion Details</div>
+                    </div>
+                    <div class="card-content">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Phase</th>
+                                    <th>Status</th>
+                                    <th>Key Achievements</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Phase 1: Foundation</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Core architecture, UI, authentication</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 2: Smart Integration</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Phishing simulations, progress tracking</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 3: Advanced Intelligence</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Emotional intelligence, life coaching</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 4: Autonomous Core</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>78% automation, real-time tracking</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 5: Enterprise Scalability</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Multi-tenant, RBAC, compliance</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 6: AI Advancement</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>12 ML models, 96.2% accuracy</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 7: Ecosystem Expansion</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Marketplace, 47 integrations</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 8: Quantum Readiness</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Post-quantum crypto, QKD systems</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ZaraAI Chat Section -->
             <div class="section" id="chat">
                 <h2 class="page-title">ZaraAI Chat Interface</h2>
                 
@@ -328,15 +1308,83 @@
                     </div>
                 </div>
             </div>
+
+            <!-- App Rating Section -->
+            <div class="section" id="rating">
+                <h2 class="page-title">Rate ZaraAI</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Share your experience with ZaraAI</p>
+                
+                <div class="rating-section">
+                    <h3 style="margin-bottom: 1rem; text-align: center;">How would you rate ZaraAI?</h3>
+                    
+                    <div class="rating-stars">
+                        <div class="star-container">
+                            <button class="star-btn" data-rating="20">⭐</button>
+                            <div class="star-label">20</div>
+                        </div>
+                        <div class="star-container">
+                            <button class="star-btn" data-rating="40">⭐</button>
+                            <div class="star-label">40</div>
+                        </div>
+                        <div class="star-container">
+                            <button class="star-btn" data-rating="60">⭐</button>
+                            <div class="star-label">60</div>
+                        </div>
+                        <div class="star-container">
+                            <button class="star-btn" data-rating="80">⭐</button>
+                            <div class="star-label">80</div>
+                        </div>
+                        <div class="star-container">
+                            <button class="star-btn" data-rating="100">⭐</button>
+                            <div class="star-label">100</div>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin: 1rem 0;">
+                        <span id="selectedRating">Selected Rating: None</span>
+                    </div>
+                    
+                    <textarea class="rating-comment" id="ratingComment" placeholder="Share your feedback (optional)..."></textarea>
+                    
+                    <div style="text-align: center;">
+                        <button class="submit-rating" id="submitRating">Submit Rating</button>
+                    </div>
+                    
+                    <div class="rating-feedback" id="ratingFeedback"></div>
+                </div>
+            </div>
             
-            <!-- Other sections remain the same -->
+            <!-- Other sections would be implemented similarly -->
+            <div class="section" id="quantum">
+                <h2 class="page-title">Quantum Readiness</h2>
+                <!-- Quantum readiness content would go here -->
+            </div>
+            
+            <div class="section" id="ecosystem">
+                <h2 class="page-title">Ecosystem</h2>
+                <!-- Ecosystem content would go here -->
+            </div>
+            
+            <div class="section" id="analytics">
+                <h2 class="page-title">Analytics</h2>
+                <!-- Analytics content would go here -->
+            </div>
+            
+            <div class="section" id="security">
+                <h2 class="page-title">Security Center</h2>
+                <!-- Security center content would go here -->
+            </div>
+            
+            <div class="section" id="coaching">
+                <h2 class="page-title">Life Coaching</h2>
+                <!-- Life coaching content would go here -->
+            </div>
         </div>
     </div>
 
     <script>
-        // DOM Elements - FIXED FOR GITHUB COMPATIBILITY
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize all elements after DOM is fully loaded
+            // DOM Elements
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const sidebar = document.getElementById('sidebar');
             const themeToggle = document.getElementById('themeToggle');
@@ -347,6 +1395,15 @@
             const chatSend = document.getElementById('chatSend');
             const chatMessages = document.getElementById('chatMessages');
             const quickActions = document.querySelectorAll('.quick-action');
+            
+            // Rating System Elements
+            const starButtons = document.querySelectorAll('.star-btn');
+            const selectedRatingDisplay = document.getElementById('selectedRating');
+            const ratingComment = document.getElementById('ratingComment');
+            const submitRatingBtn = document.getElementById('submitRating');
+            const ratingFeedback = document.getElementById('ratingFeedback');
+
+            let currentRating = 0;
 
             // Navigation Handler
             navItems.forEach(function(item) {
@@ -405,7 +1462,7 @@
                 });
             }
 
-            // Chat Functionality - FIXED FOR GITHUB
+            // Chat Functionality
             if (chatSend && chatInput) {
                 chatSend.addEventListener('click', sendMessage);
                 chatInput.addEventListener('keypress', function(e) {
@@ -425,6 +1482,54 @@
                     }
                 });
             });
+
+            // Rating System
+            starButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const rating = parseInt(this.getAttribute('data-rating'));
+                    currentRating = rating;
+                    
+                    // Update star display
+                    starButtons.forEach(function(star) {
+                        const starRating = parseInt(star.getAttribute('data-rating'));
+                        if (starRating <= rating) {
+                            star.classList.add('active');
+                        } else {
+                            star.classList.remove('active');
+                        }
+                    });
+                    
+                    // Update rating display
+                    selectedRatingDisplay.textContent = `Selected Rating: ${rating}`;
+                });
+            });
+
+            // Submit Rating
+            if (submitRatingBtn) {
+                submitRatingBtn.addEventListener('click', function() {
+                    if (currentRating === 0) {
+                        alert('Please select a rating before submitting.');
+                        return;
+                    }
+                    
+                    // Show submitted message
+                    ratingFeedback.textContent = 'Submitted';
+                    ratingFeedback.className = 'rating-feedback submitted';
+                    
+                    // Disable form
+                    starButtons.forEach(function(star) {
+                        star.disabled = true;
+                    });
+                    ratingComment.disabled = true;
+                    submitRatingBtn.disabled = true;
+                    
+                    // Show thank you message after 3 seconds
+                    setTimeout(function() {
+                        ratingFeedback.textContent = 'Thank you for your feedback!';
+                        ratingFeedback.className = 'rating-feedback thank-you';
+                    }, 3000);
+                });
+            }
 
             function sendMessage() {
                 if (!chatInput || !chatMessages) return;
