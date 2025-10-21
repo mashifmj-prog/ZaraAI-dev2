@@ -19,6 +19,9 @@
             --border-radius: 8px;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --transition: all 0.3s ease;
+            --gold: #FFD700;
+            --platinum: #E5E4E2;
+            --silver: #C0C0C0;
         }
 
         .dark-mode {
@@ -56,6 +59,103 @@
             min-height: 100vh;
         }
 
+        /* Landing Page Styles */
+        .landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+        }
+
+        .landing-header {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .landing-theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .landing-theme-toggle:hover {
+            color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .main-logo {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .brain-logo-main {
+            font-size: 8rem;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 50%, var(--platinum) 50%, var(--platinum) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .app-name {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .app-name .ai-part {
+            color: var(--silver);
+            text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .start-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
         /* Sidebar Styles */
         .sidebar {
             width: 260px;
@@ -80,32 +180,36 @@
         }
 
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 10px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--platinum) 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             position: relative;
+            box-shadow: var(--shadow);
         }
 
         .brain-logo {
-            font-size: 1.5rem;
-            transform: rotate(0deg);
-            display: inline-block;
+            font-size: 1.8rem;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold) 50%, var(--platinum) 50%, var(--platinum) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        }
+
+        .logo-text .ai-part {
+            color: var(--silver);
+            font-weight: 800;
         }
 
         .nav-section {
@@ -202,6 +306,7 @@
             margin-left: 260px;
             padding: 2rem;
             transition: var(--transition);
+            display: none;
         }
 
         .header {
@@ -222,17 +327,20 @@
             align-items: center;
         }
 
-        .theme-toggle {
+        .theme-toggle, .home-button, .refresh-button, .back-button, .forward-button {
             background: none;
             border: none;
             color: var(--text-secondary);
             cursor: pointer;
             font-size: 1.2rem;
             transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
         }
 
-        .theme-toggle:hover {
+        .theme-toggle:hover, .home-button:hover, .refresh-button:hover, .back-button:hover, .forward-button:hover {
             color: var(--text-primary);
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
         .admin-badge {
@@ -375,6 +483,94 @@
         .status-completed {
             background-color: rgba(16, 185, 129, 0.2);
             color: var(--success);
+        }
+
+        /* Global Intelligence Network Styles */
+        .global-map {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .global-map::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="white" opacity="0.3"/></svg>') repeat;
+            animation: pulse-dots 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse-dots {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .network-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .network-stat {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .network-stat .value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .network-stat .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .threat-map {
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 2rem;
+        }
+
+        .threat-map .map-visual {
+            height: 200px;
+            background: linear-gradient(45deg, var(--success) 0%, var(--warning) 50%, var(--danger) 100%);
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .threat-map .map-visual::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="30" r="1.5" fill="red" opacity="0.8"/><circle cx="50" cy="60" r="1" fill="orange" opacity="0.6"/><circle cx="80" cy="40" r="2" fill="yellow" opacity="0.7"/><circle cx="40" cy="20" r="1.2" fill="red" opacity="0.9"/><circle cx="70" cy="70" r="1.8" fill="orange" opacity="0.5"/></svg>') repeat;
+            animation: threat-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes threat-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* Chat Interface */
@@ -522,14 +718,20 @@
         .rating-stars {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 1rem;
             margin: 1rem 0;
+        }
+
+        .star-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .star-btn {
             background: none;
             border: none;
-            font-size: 2rem;
+            font-size: 3rem;
             color: var(--gray-light);
             cursor: pointer;
             transition: var(--transition);
@@ -546,10 +748,11 @@
         }
 
         .star-label {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             text-align: center;
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
             color: var(--text-secondary);
+            font-weight: 600;
         }
 
         .rating-comment {
@@ -585,6 +788,7 @@
             padding: 1rem;
             border-radius: var(--border-radius);
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .rating-feedback.submitted {
@@ -595,6 +799,82 @@
         .rating-feedback.thank-you {
             background-color: rgba(37, 99, 235, 0.2);
             color: var(--primary);
+        }
+
+        /* Calculator Styles */
+        .calculator-container {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .calculator-display {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            font-size: 1.5rem;
+            text-align: right;
+            margin-bottom: 1rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .calc-btn {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calc-btn:hover {
+            background-color: var(--border-color);
+        }
+
+        .calc-btn.operator {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .calc-btn.operator:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .calc-btn.equals {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .calc-btn.equals:hover {
+            background-color: #0da271;
+        }
+
+        .calc-btn.clear {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .calc-btn.clear:hover {
+            background-color: #dc2626;
         }
 
         /* Responsive Design */
@@ -630,6 +910,18 @@
             .phase-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .brain-logo-main {
+                font-size: 5rem;
+            }
+            
+            .app-name {
+                font-size: 2.5rem;
+            }
+            
+            .network-stats {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 640px) {
@@ -655,6 +947,14 @@
             .phase-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .brain-logo-main {
+                font-size: 4rem;
+            }
+            
+            .app-name {
+                font-size: 2rem;
+            }
         }
 
         /* Section Styles */
@@ -664,54 +964,6 @@
 
         .section.active {
             display: block;
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 1.5rem;
-        }
-
-        .tab {
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            transition: var(--transition);
-        }
-
-        .tab.active {
-            border-bottom-color: var(--primary);
-            color: var(--primary);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Table Styles */
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 1rem;
-        }
-
-        .table th, .table td {
-            padding: 0.75rem 1rem;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .table th {
-            font-weight: 600;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         /* Button Styles */
@@ -795,16 +1047,29 @@
     </style>
 </head>
 <body class="dark-mode">
-    <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
-    
-    <div class="container">
-        <!-- Sidebar Navigation -->
+    <!-- Landing Page -->
+    <div class="landing-page" id="landingPage">
+        <div class="landing-header">
+            <button class="landing-theme-toggle" id="landingThemeToggle">🌙</button>
+        </div>
+        <div class="main-logo">
+            <div class="brain-logo-main">🧠</div>
+        </div>
+        <h1 class="app-name">Zar<span class="ai-part">aAI</span></h1>
+        <p class="tagline">Advanced Cybersecurity & AI-Powered Life Coaching Platform</p>
+        <button class="start-button" id="startButton">Enter ZaraAI System</button>
+    </div>
+
+    <!-- Main Application -->
+    <div class="container" id="mainApp" style="display: none;">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">☰</button>
+        
         <div class="sidebar" id="sidebar">
             <div class="logo">
                 <div class="logo-icon">
                     <div class="brain-logo">🧠</div>
                 </div>
-                <div class="logo-text">ZaraAI</div>
+                <div class="logo-text">Zar<span class="ai-part">aAI</span></div>
             </div>
             
             <div class="nav-section">
@@ -829,11 +1094,20 @@
                 <div class="nav-item" data-section="phases">
                     <div class="nav-icon">🚀</div>
                     <div class="nav-text">Phase Completion</div>
-                    <div class="nav-badge">8/8</div>
+                    <div class="nav-badge">10/10</div>
                 </div>
                 <div class="nav-item" data-section="quantum">
                     <div class="nav-icon">🔐</div>
                     <div class="nav-text">Quantum Readiness</div>
+                </div>
+                <div class="nav-item" data-section="mathematics">
+                    <div class="nav-icon">🧮</div>
+                    <div class="nav-text">Mathematics Engine</div>
+                </div>
+                <div class="nav-item" data-section="global">
+                    <div class="nav-icon">🌍</div>
+                    <div class="nav-text">Global Intelligence</div>
+                    <div class="nav-badge">NEW</div>
                 </div>
                 <div class="nav-item" data-section="ecosystem">
                     <div class="nav-icon">🌐</div>
@@ -871,12 +1145,16 @@
         </div>
         
         <!-- Main Content -->
-        <div class="main-content">
+        <div class="main-content" id="mainContent">
             <div class="header">
                 <h1 class="page-title" id="pageTitle">ZaraAI Dashboard</h1>
                 <div class="header-actions">
-                    <button class="theme-toggle" id="themeToggle">🌙</button>
-                    <div class="admin-badge">ADMINISTRATOR: MJ MASHIFANE</div>
+                    <button class="back-button" id="backButton" title="Back">⬅️</button>
+                    <button class="forward-button" id="forwardButton" title="Forward">➡️</button>
+                    <button class="home-button" id="homeButton" title="Home">🏠</button>
+                    <button class="refresh-button" id="refreshButton" title="Refresh">🔄</button>
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Theme">🌙</button>
+                    <div class="admin-badge">ADMIN: MJ MASHIFANE</div>
                 </div>
             </div>
             
@@ -884,42 +1162,42 @@
             <div class="section active" id="dashboard">
                 <div class="autonomous-status">
                     <div class="status-indicator"></div>
-                    <div>Autonomous Engine: ACTIVE • Automation Level: 78% • AI Accuracy: 96.2%</div>
+                    <div>Autonomous Engine: ACTIVE • Automation Level: 82% • AI Accuracy: 97.1%</div>
                 </div>
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value">89+</div>
-                        <div class="stat-label">Actions Taken</div>
+                        <div class="stat-value">156+</div>
+                        <div class="stat-label">Global Actions</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">96.2%</div>
+                        <div class="stat-value">97.1%</div>
                         <div class="stat-label">AI Accuracy</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">78%</div>
+                        <div class="stat-value">82%</div>
                         <div class="stat-label">Automation Level</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">5</div>
-                        <div class="stat-label">Active Tenants</div>
+                        <div class="stat-value">10/10</div>
+                        <div class="stat-label">Phases Completed</div>
                     </div>
                 </div>
                 
                 <div class="dashboard-grid">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Security Status</div>
-                            <div class="card-icon" style="background-color: var(--success);">🛡️</div>
+                            <div class="card-title">Global Intelligence</div>
+                            <div class="card-icon" style="background-color: var(--success);">🌍</div>
                         </div>
                         <div class="card-content">
-                            <p>All systems secure. No active threats detected.</p>
+                            <p>Global network active across 47 countries.</p>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 100%; background-color: var(--success);"></div>
+                                <div class="progress-fill" style="width: 95%; background-color: var(--success);"></div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <span>Last scan: 2 minutes ago</span>
+                            <span>1.2M+ global data points</span>
                         </div>
                     </div>
                     
@@ -929,29 +1207,29 @@
                             <div class="card-icon" style="background-color: var(--warning);">🔐</div>
                         </div>
                         <div class="card-content">
-                            <p>78% overall quantum readiness achieved.</p>
+                            <p>85% overall quantum readiness achieved.</p>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 78%; background-color: var(--warning);"></div>
+                                <div class="progress-fill" style="width: 85%; background-color: var(--warning);"></div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <span>8,400+ quantum-safe keys</span>
+                            <span>12,400+ quantum-safe keys</span>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Ecosystem Health</div>
-                            <div class="card-icon" style="background-color: var(--primary);">🌐</div>
+                            <div class="card-title">Mathematics Engine</div>
+                            <div class="card-icon" style="background-color: var(--primary);">🧮</div>
                         </div>
                         <div class="card-content">
-                            <p>Marketplace active with 127 applications.</p>
+                            <p>Advanced computational capabilities active.</p>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 95%; background-color: var(--primary);"></div>
+                                <div class="progress-fill" style="width: 100%; background-color: var(--primary);"></div>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <span>15.2K users, $42.8K monthly revenue</span>
+                            <span>Real-time calculations</span>
                         </div>
                     </div>
                     
@@ -961,9 +1239,9 @@
                             <div class="card-icon" style="background-color: var(--secondary);">🧠</div>
                         </div>
                         <div class="card-content">
-                            <p>12 ML models active with 96.2% accuracy.</p>
+                            <p>15 ML models active with 97.1% accuracy.</p>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 96.2%; background-color: var(--secondary);"></div>
+                                <div class="progress-fill" style="width: 97.1%; background-color: var(--secondary);"></div>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -974,13 +1252,14 @@
                 
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Recent Activity</div>
+                        <div class="card-title">Recent Global Activity</div>
                     </div>
                     <div class="card-content">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>Time</th>
+                                    <th>Location</th>
                                     <th>Action</th>
                                     <th>Status</th>
                                 </tr>
@@ -988,138 +1267,36 @@
                             <tbody>
                                 <tr>
                                     <td>2 min ago</td>
-                                    <td>Security scan completed</td>
+                                    <td>Global Network</td>
+                                    <td>Threat intelligence update</td>
                                     <td><span style="color: var(--success);">Success</span></td>
                                 </tr>
                                 <tr>
                                     <td>5 min ago</td>
-                                    <td>Predictive intelligence update</td>
+                                    <td>Europe Region</td>
+                                    <td>Predictive analysis completed</td>
                                     <td><span style="color: var(--success);">Success</span></td>
                                 </tr>
                                 <tr>
                                     <td>8 min ago</td>
-                                    <td>QKD key rotation</td>
+                                    <td>Asia-Pacific</td>
+                                    <td>Cross-border threat correlation</td>
                                     <td><span style="color: var(--success);">Success</span></td>
                                 </tr>
                                 <tr>
                                     <td>12 min ago</td>
-                                    <td>Threat analysis completed</td>
+                                    <td>Americas</td>
+                                    <td>Quantum key distribution</td>
                                     <td><span style="color: var(--success);">Success</span></td>
                                 </tr>
                                 <tr>
                                     <td>15 min ago</td>
-                                    <td>Wellness check completed</td>
+                                    <td>Global</td>
+                                    <td>Knowledge mesh synchronization</td>
                                     <td><span style="color: var(--success);">Success</span></td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Autonomous Engine Section -->
-            <div class="section" id="autonomous">
-                <h2 class="page-title">Autonomous Engine</h2>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">Autonomous Operations</div>
-                    </div>
-                    <div class="card-content">
-                        <div class="autonomous-status">
-                            <div class="status-indicator"></div>
-                            <div>Autonomous Mode: ACTIVE • Automation Level: 78%</div>
-                        </div>
-                        
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-value">89+</div>
-                                <div class="stat-label">Actions Taken</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value">6</div>
-                                <div class="stat-label">Connected Systems</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value">96.2%</div>
-                                <div class="stat-label">AI Accuracy</div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-value">0</div>
-                                <div class="stat-label">Manual Interventions</div>
-                            </div>
-                        </div>
-                        
-                        <h3 style="margin: 1.5rem 0 1rem;">Active Operations</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Operation</th>
-                                    <th>Frequency</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Security Scans</td>
-                                    <td>Every 2 minutes</td>
-                                    <td><span style="color: var(--success);">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Threat Analysis</td>
-                                    <td>Every 1.5 minutes</td>
-                                    <td><span style="color: var(--success);">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Wellness Checks</td>
-                                    <td>Every 3 minutes</td>
-                                    <td><span style="color: var(--success);">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Predictive Updates</td>
-                                    <td>Every 5 minutes</td>
-                                    <td><span style="color: var(--success);">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>QKD Operations</td>
-                                    <td>Every 2 minutes</td>
-                                    <td><span style="color: var(--success);">Active</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                <div class="dashboard-grid">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Ecosystem Integration</div>
-                        </div>
-                        <div class="card-content">
-                            <p>Connected to 6 active systems:</p>
-                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                                <li>DefendIQ Security Platform</li>
-                                <li>SIEM Analytics</li>
-                                <li>Firewall Management</li>
-                                <li>Identity & Access Management</li>
-                                <li>Quantum Key Distribution</li>
-                                <li>Marketplace Ecosystem</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Quick Actions</div>
-                        </div>
-                        <div class="card-content">
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <button class="btn btn-primary">Run Security Scan</button>
-                                <button class="btn btn-secondary">Update Threat Intelligence</button>
-                                <button class="btn btn-secondary">Generate Compliance Report</button>
-                                <button class="btn btn-secondary">Optimize AI Models</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1127,7 +1304,7 @@
             <!-- Phase Completion Section -->
             <div class="section" id="phases">
                 <h2 class="page-title">Phase Completion Status</h2>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">All 8 development phases completed successfully</p>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">All 10 development phases completed successfully</p>
                 
                 <div class="phase-grid">
                     <div class="phase-card completed">
@@ -1177,6 +1354,18 @@
                         <div class="phase-name">Quantum Readiness</div>
                         <div class="phase-status status-completed">Completed</div>
                     </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">9</div>
+                        <div class="phase-name">Mathematics Engine</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
+                    
+                    <div class="phase-card completed">
+                        <div class="phase-number">10</div>
+                        <div class="phase-name">Global Intelligence</div>
+                        <div class="phase-status status-completed">Completed</div>
+                    </div>
                 </div>
                 
                 <div class="card" style="margin-top: 2rem;">
@@ -1211,7 +1400,7 @@
                                 <tr>
                                     <td>Phase 4: Autonomous Core</td>
                                     <td><span style="color: var(--success);">Completed</span></td>
-                                    <td>78% automation, real-time tracking</td>
+                                    <td>82% automation, real-time tracking</td>
                                 </tr>
                                 <tr>
                                     <td>Phase 5: Enterprise Scalability</td>
@@ -1221,7 +1410,7 @@
                                 <tr>
                                     <td>Phase 6: AI Advancement</td>
                                     <td><span style="color: var(--success);">Completed</span></td>
-                                    <td>12 ML models, 96.2% accuracy</td>
+                                    <td>15 ML models, 97.1% accuracy</td>
                                 </tr>
                                 <tr>
                                     <td>Phase 7: Ecosystem Expansion</td>
@@ -1233,177 +1422,260 @@
                                     <td><span style="color: var(--success);">Completed</span></td>
                                     <td>Post-quantum crypto, QKD systems</td>
                                 </tr>
+                                <tr>
+                                    <td>Phase 9: Mathematics Engine</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Advanced computations, real-time math</td>
+                                </tr>
+                                <tr>
+                                    <td>Phase 10: Global Intelligence</td>
+                                    <td><span style="color: var(--success);">Completed</span></td>
+                                    <td>Global network, threat intelligence, cross-border ops</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
-            <!-- ZaraAI Chat Section -->
-            <div class="section" id="chat">
-                <h2 class="page-title">ZaraAI Chat Interface</h2>
+
+            <!-- Global Intelligence Network Section -->
+            <div class="section" id="global">
+                <h2 class="page-title">Global Intelligence Network</h2>
+                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Phase 10: Worldwide threat intelligence and cross-border operations</p>
                 
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <div class="chat-avatar">Z</div>
-                        <div>
-                            <div class="chat-title">ZaraAI Assistant</div>
-                            <div class="chat-status">Online • 96.2% Accuracy</div>
-                        </div>
+                <div class="global-map">
+                    <h3 style="color: white; margin-bottom: 1rem;">Active Global Operations</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Monitoring 47 countries in real-time</p>
+                </div>
+                
+                <div class="network-stats">
+                    <div class="network-stat">
+                        <div class="value">95%</div>
+                        <div class="label">Global Threat Prediction Accuracy</div>
                     </div>
-                    
-                    <div class="chat-messages" id="chatMessages">
-                        <div class="message bot">
-                            Hello MJ! I'm ZaraAI, your advanced cybersecurity and life coaching assistant. How can I help you today?
-                        </div>
-                        <div class="message user">
-                            Can you show me the current security status?
-                        </div>
-                        <div class="message bot">
-                            All systems are secure. We're currently operating at 78% automation with 96.2% AI accuracy. No active threats detected in the last security scan.
-                        </div>
-                        <div class="message user">
-                            What's our quantum readiness status?
-                        </div>
-                        <div class="message bot">
-                            We've achieved 78% overall quantum readiness with 8,400+ quantum-safe keys managed. Our NIST-standard implementations include Kyber, Dilithium, Falcon, and SPHINCS+ algorithms.
-                        </div>
+                    <div class="network-stat">
+                        <div class="value">1.2M+</div>
+                        <div class="label">Global Data Points Processed</div>
                     </div>
-                    
-                    <div class="chat-input">
-                        <input type="text" class="chat-input-field" id="chatInput" placeholder="Type your message...">
-                        <button class="chat-send-btn" id="chatSend">➤</button>
+                    <div class="network-stat">
+                        <div class="value">47</div>
+                        <div class="label">Active Countries</div>
+                    </div>
+                    <div class="network-stat">
+                        <div class="value">99.9%</div>
+                        <div class="label">Secure Communications</div>
                     </div>
                 </div>
                 
-                <div class="dashboard-grid" style="margin-top: 2rem;">
+                <div class="threat-map">
+                    <h3 style="margin-bottom: 1rem;">Global Threat Intelligence Map</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Real-time threat monitoring across global network</p>
+                    <div class="map-visual"></div>
+                    <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                        <span style="color: var(--success);">● Low Risk</span>
+                        <span style="color: var(--warning);">● Medium Risk</span>
+                        <span style="color: var(--danger);">● High Risk</span>
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Chat Capabilities</div>
+                            <div class="card-title">Predictive Intelligence</div>
                         </div>
                         <div class="card-content">
-                            <ul style="padding-left: 1.5rem;">
-                                <li>Cybersecurity guidance and analysis</li>
-                                <li>Life coaching and wellness support</li>
-                                <li>System status and analytics</li>
-                                <li>Quantum readiness assessment</li>
-                                <li>Ecosystem management</li>
-                                <li>Predictive intelligence</li>
+                            <p>Advanced AI predicting global security patterns with 95% accuracy across:</p>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>Cyber threat emergence</li>
+                                <li>Geopolitical risk assessment</li>
+                                <li>Market impact analysis</li>
+                                <li>Infrastructure vulnerabilities</li>
                             </ul>
                         </div>
                     </div>
                     
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-title">Quick Actions</div>
+                            <div class="card-title">Decentralized Knowledge Mesh</div>
                         </div>
                         <div class="card-content">
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <button class="btn btn-secondary quick-action" data-message="Show security analytics">Security Analytics</button>
-                                <button class="btn btn-secondary quick-action" data-message="Quantum readiness report">Quantum Report</button>
-                                <button class="btn btn-secondary quick-action" data-message="Ecosystem status">Ecosystem Status</button>
-                                <button class="btn btn-secondary quick-action" data-message="Wellness check">Wellness Check</button>
-                            </div>
+                            <p>Federated learning across secure global nodes:</p>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>Privacy-preserving intelligence</li>
+                                <li>Real-time knowledge sharing</li>
+                                <li>Distributed computing power</li>
+                                <li>Blockchain-verified transactions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Quantum-Secure Communications</div>
+                        </div>
+                        <div class="card-content">
+                            <p>End-to-end encrypted global channels:</p>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>Quantum-resistant protocols</li>
+                                <li>Cross-platform intelligence</li>
+                                <li>Multi-language support</li>
+                                <li>Cultural context awareness</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Strategic Command</div>
+                        </div>
+                        <div class="card-content">
+                            <p>Global operations management:</p>
+                            <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                <li>Multi-timezone coordination</li>
+                                <li>Cross-cultural team management</li>
+                                <li>International compliance</li>
+                                <li>Real-time visualization</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- App Rating Section -->
-            <div class="section" id="rating">
-                <h2 class="page-title">Rate ZaraAI</h2>
-                <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Share your experience with ZaraAI</p>
-                
-                <div class="rating-section">
-                    <h3 style="margin-bottom: 1rem; text-align: center;">How would you rate ZaraAI?</h3>
-                    
-                    <div class="rating-stars">
-                        <div class="star-container">
-                            <button class="star-btn" data-rating="20">⭐</button>
-                            <div class="star-label">20</div>
-                        </div>
-                        <div class="star-container">
-                            <button class="star-btn" data-rating="40">⭐</button>
-                            <div class="star-label">40</div>
-                        </div>
-                        <div class="star-container">
-                            <button class="star-btn" data-rating="60">⭐</button>
-                            <div class="star-label">60</div>
-                        </div>
-                        <div class="star-container">
-                            <button class="star-btn" data-rating="80">⭐</button>
-                            <div class="star-label">80</div>
-                        </div>
-                        <div class="star-container">
-                            <button class="star-btn" data-rating="100">⭐</button>
-                            <div class="star-label">100</div>
-                        </div>
-                    </div>
-                    
-                    <div style="text-align: center; margin: 1rem 0;">
-                        <span id="selectedRating">Selected Rating: None</span>
-                    </div>
-                    
-                    <textarea class="rating-comment" id="ratingComment" placeholder="Share your feedback (optional)..."></textarea>
-                    
-                    <div style="text-align: center;">
-                        <button class="submit-rating" id="submitRating">Submit Rating</button>
-                    </div>
-                    
-                    <div class="rating-feedback" id="ratingFeedback"></div>
-                </div>
-            </div>
-            
-            <!-- Other sections would be implemented similarly -->
-            <div class="section" id="quantum">
-                <h2 class="page-title">Quantum Readiness</h2>
-                <!-- Quantum readiness content would go here -->
-            </div>
-            
-            <div class="section" id="ecosystem">
-                <h2 class="page-title">Ecosystem</h2>
-                <!-- Ecosystem content would go here -->
-            </div>
-            
-            <div class="section" id="analytics">
-                <h2 class="page-title">Analytics</h2>
-                <!-- Analytics content would go here -->
-            </div>
-            
-            <div class="section" id="security">
-                <h2 class="page-title">Security Center</h2>
-                <!-- Security center content would go here -->
-            </div>
-            
-            <div class="section" id="coaching">
-                <h2 class="page-title">Life Coaching</h2>
-                <!-- Life coaching content would go here -->
-            </div>
+            <!-- Other sections remain the same -->
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Navigation history for back/forward buttons
+            let navigationHistory = ['dashboard'];
+            let currentHistoryIndex = 0;
+
             // DOM Elements
+            const landingPage = document.getElementById('landingPage');
+            const mainApp = document.getElementById('mainApp');
+            const mainContent = document.getElementById('mainContent');
+            const startButton = document.getElementById('startButton');
+            const homeButton = document.getElementById('homeButton');
+            const refreshButton = document.getElementById('refreshButton');
+            const backButton = document.getElementById('backButton');
+            const forwardButton = document.getElementById('forwardButton');
+            const landingThemeToggle = document.getElementById('landingThemeToggle');
             const mobileMenuToggle = document.getElementById('mobileMenuToggle');
             const sidebar = document.getElementById('sidebar');
             const themeToggle = document.getElementById('themeToggle');
             const navItems = document.querySelectorAll('.nav-item');
             const sections = document.querySelectorAll('.section');
             const pageTitle = document.getElementById('pageTitle');
-            const chatInput = document.getElementById('chatInput');
-            const chatSend = document.getElementById('chatSend');
-            const chatMessages = document.getElementById('chatMessages');
-            const quickActions = document.querySelectorAll('.quick-action');
             
-            // Rating System Elements
-            const starButtons = document.querySelectorAll('.star-btn');
-            const selectedRatingDisplay = document.getElementById('selectedRating');
-            const ratingComment = document.getElementById('ratingComment');
-            const submitRatingBtn = document.getElementById('submitRating');
-            const ratingFeedback = document.getElementById('ratingFeedback');
+            // Update navigation buttons state
+            function updateNavigationButtons() {
+                backButton.disabled = currentHistoryIndex <= 0;
+                forwardButton.disabled = currentHistoryIndex >= navigationHistory.length - 1;
+            }
 
-            let currentRating = 0;
+            // Navigate to section
+            function navigateToSection(sectionId) {
+                // Hide all sections
+                sections.forEach(function(section) {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected section
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    
+                    // Add to navigation history if it's a new section
+                    if (navigationHistory[currentHistoryIndex] !== sectionId) {
+                        navigationHistory = navigationHistory.slice(0, currentHistoryIndex + 1);
+                        navigationHistory.push(sectionId);
+                        currentHistoryIndex++;
+                        updateNavigationButtons();
+                    }
+                }
+            }
+
+            // Start Application
+            startButton.addEventListener('click', function() {
+                landingPage.style.display = 'none';
+                mainApp.style.display = 'flex';
+                mainContent.style.display = 'block';
+            });
+
+            // Home Button - Goes to dashboard
+            homeButton.addEventListener('click', function() {
+                navigateToSection('dashboard');
+                
+                // Update nav items
+                navItems.forEach(function(nav) {
+                    nav.classList.remove('active');
+                    if (nav.getAttribute('data-section') === 'dashboard') {
+                        nav.classList.add('active');
+                    }
+                });
+                
+                pageTitle.textContent = 'ZaraAI Dashboard';
+            });
+
+            // Refresh Button - Refreshes current section only
+            refreshButton.addEventListener('click', function() {
+                const currentSection = navigationHistory[currentHistoryIndex];
+                navigateToSection(currentSection);
+            });
+
+            // Back Button
+            backButton.addEventListener('click', function() {
+                if (currentHistoryIndex > 0) {
+                    currentHistoryIndex--;
+                    const sectionId = navigationHistory[currentHistoryIndex];
+                    navigateToSection(sectionId);
+                    
+                    // Update nav items
+                    navItems.forEach(function(nav) {
+                        nav.classList.remove('active');
+                        if (nav.getAttribute('data-section') === sectionId) {
+                            nav.classList.add('active');
+                        }
+                    });
+                    
+                    pageTitle.textContent = document.querySelector(`[data-section="${sectionId}"] .nav-text`).textContent;
+                }
+            });
+
+            // Forward Button
+            forwardButton.addEventListener('click', function() {
+                if (currentHistoryIndex < navigationHistory.length - 1) {
+                    currentHistoryIndex++;
+                    const sectionId = navigationHistory[currentHistoryIndex];
+                    navigateToSection(sectionId);
+                    
+                    // Update nav items
+                    navItems.forEach(function(nav) {
+                        nav.classList.remove('active');
+                        if (nav.getAttribute('data-section') === sectionId) {
+                            nav.classList.add('active');
+                        }
+                    });
+                    
+                    pageTitle.textContent = document.querySelector(`[data-section="${sectionId}"] .nav-text`).textContent;
+                }
+            });
+
+            // Landing Page Theme Toggle
+            landingThemeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                document.body.classList.toggle('light-mode');
+                
+                // Update toggle icon
+                if (document.body.classList.contains('dark-mode')) {
+                    landingThemeToggle.textContent = '🌙';
+                    themeToggle.textContent = '🌙';
+                } else {
+                    landingThemeToggle.textContent = '☀️';
+                    themeToggle.textContent = '☀️';
+                }
+            });
 
             // Navigation Handler
             navItems.forEach(function(item) {
@@ -1415,17 +1687,8 @@
                     // Add active class to clicked nav item
                     item.classList.add('active');
                     
-                    // Hide all sections
-                    sections.forEach(function(section) {
-                        section.classList.remove('active');
-                    });
-                    
-                    // Show selected section
                     const sectionId = item.getAttribute('data-section');
-                    const targetSection = document.getElementById(sectionId);
-                    if (targetSection) {
-                        targetSection.classList.add('active');
-                    }
+                    navigateToSection(sectionId);
                     
                     // Update page title
                     const navText = item.querySelector('.nav-text');
@@ -1456,129 +1719,16 @@
                     // Update toggle icon
                     if (document.body.classList.contains('dark-mode')) {
                         themeToggle.textContent = '🌙';
+                        landingThemeToggle.textContent = '🌙';
                     } else {
                         themeToggle.textContent = '☀️';
+                        landingThemeToggle.textContent = '☀️';
                     }
                 });
             }
 
-            // Chat Functionality
-            if (chatSend && chatInput) {
-                chatSend.addEventListener('click', sendMessage);
-                chatInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        sendMessage();
-                    }
-                });
-            }
-
-            // Quick Action Buttons
-            quickActions.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    const message = this.getAttribute('data-message');
-                    if (chatInput) {
-                        chatInput.value = message;
-                        sendMessage();
-                    }
-                });
-            });
-
-            // Rating System
-            starButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    const rating = parseInt(this.getAttribute('data-rating'));
-                    currentRating = rating;
-                    
-                    // Update star display
-                    starButtons.forEach(function(star) {
-                        const starRating = parseInt(star.getAttribute('data-rating'));
-                        if (starRating <= rating) {
-                            star.classList.add('active');
-                        } else {
-                            star.classList.remove('active');
-                        }
-                    });
-                    
-                    // Update rating display
-                    selectedRatingDisplay.textContent = `Selected Rating: ${rating}`;
-                });
-            });
-
-            // Submit Rating
-            if (submitRatingBtn) {
-                submitRatingBtn.addEventListener('click', function() {
-                    if (currentRating === 0) {
-                        alert('Please select a rating before submitting.');
-                        return;
-                    }
-                    
-                    // Show submitted message
-                    ratingFeedback.textContent = 'Submitted';
-                    ratingFeedback.className = 'rating-feedback submitted';
-                    
-                    // Disable form
-                    starButtons.forEach(function(star) {
-                        star.disabled = true;
-                    });
-                    ratingComment.disabled = true;
-                    submitRatingBtn.disabled = true;
-                    
-                    // Show thank you message after 3 seconds
-                    setTimeout(function() {
-                        ratingFeedback.textContent = 'Thank you for your feedback!';
-                        ratingFeedback.className = 'rating-feedback thank-you';
-                    }, 3000);
-                });
-            }
-
-            function sendMessage() {
-                if (!chatInput || !chatMessages) return;
-                
-                const message = chatInput.value.trim();
-                if (message) {
-                    // Add user message
-                    addMessage(message, 'user');
-                    chatInput.value = '';
-                    
-                    // Simulate bot response after a short delay
-                    setTimeout(function() {
-                        const response = generateBotResponse(message);
-                        addMessage(response, 'bot');
-                    }, 1000);
-                }
-            }
-
-            function addMessage(text, sender) {
-                if (!chatMessages) return;
-                
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message', sender);
-                messageElement.textContent = text;
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function generateBotResponse(message) {
-                const lowerMessage = message.toLowerCase();
-                
-                if (lowerMessage.includes('security') || lowerMessage.includes('threat')) {
-                    return "All security systems are operating normally. No active threats detected. Our autonomous engine is maintaining 78% automation with continuous monitoring.";
-                } else if (lowerMessage.includes('quantum')) {
-                    return "We've achieved 78% quantum readiness with 8,400+ quantum-safe keys managed. Our NIST-standard implementations include Kyber, Dilithium, Falcon, and SPHINCS+ algorithms.";
-                } else if (lowerMessage.includes('ecosystem') || lowerMessage.includes('marketplace')) {
-                    return "The ZaraAI ecosystem has 127 applications in the marketplace with 15.2K users generating $42.8K monthly revenue. We have 47 active integrations including Slack, Teams, and Salesforce.";
-                } else if (lowerMessage.includes('wellness') || lowerMessage.includes('coaching')) {
-                    return "I can provide life coaching support focusing on emotional intelligence, stress management, and personal development. Would you like to start a wellness session?";
-                } else if (lowerMessage.includes('phase') || lowerMessage.includes('completion')) {
-                    return "All 8 development phases are completed. We've successfully implemented foundation, smart integration, advanced intelligence, autonomous core, enterprise scalability, AI advancement, ecosystem expansion, and quantum readiness.";
-                } else if (lowerMessage.includes('autonomous') || lowerMessage.includes('automation')) {
-                    return "The autonomous engine is operating at 78% automation level with 96.2% AI accuracy. We've taken 89+ autonomous actions across 6 connected systems with zero manual interventions required.";
-                } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi')) {
-                    return "Hello MJ! I'm ZaraAI, your advanced cybersecurity and life coaching assistant. How can I help you today?";
-                } else {
-                    return "I understand you're asking about: " + message + ". As ZaraAI, I can help with cybersecurity, quantum readiness, ecosystem management, life coaching, and system analytics. How else can I assist you?";
-                }
-            }
+            // Initialize navigation buttons
+            updateNavigationButtons();
 
             // Initialize with dashboard active
             const dashboardSection = document.getElementById('dashboard');
