@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZaraAI Enterprise - Phase 6 AI Advancement</title>
+    <title>ZaraAI Enterprise - Phase 7 Ecosystem Expansion</title>
     <style>
         :root {
             --primary: #2563eb;
@@ -14,6 +14,9 @@
             --danger: #ef4444;
             --ai-purple: #8b5cf6;
             --ai-blue: #06b6d4;
+            --ecosystem-green: #22c55e;
+            --marketplace-orange: #f97316;
+            --mobile-indigo: #6366f1;
             --dark: #1f2937;
             --light: #f8fafc;
             --gray: #6b7280;
@@ -82,7 +85,7 @@
         .logo h1 {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), var(--ai-purple));
+            background: linear-gradient(90deg, var(--primary), var(--ecosystem-green));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -112,7 +115,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -121,7 +124,7 @@
         }
 
         .admin-badge {
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
             color: white;
             padding: 2px 8px;
             border-radius: 12px;
@@ -132,7 +135,7 @@
         /* Main Layout */
         .main-layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 320px 1fr;
             min-height: calc(100vh - 80px);
         }
 
@@ -169,7 +172,7 @@
         .nav-link:hover, .nav-link.active {
             background-color: var(--bg-card);
             color: var(--text-primary);
-            border-left-color: var(--ai-purple);
+            border-left-color: var(--ecosystem-green);
         }
 
         .nav-link i {
@@ -219,8 +222,8 @@
             background-color: var(--primary);
         }
 
-        .status-badge.ai {
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+        .status-badge.ecosystem {
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
             color: white;
         }
 
@@ -295,7 +298,7 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--ai-purple), var(--ai-blue));
+            background: linear-gradient(90deg, var(--ecosystem-green), var(--mobile-indigo));
             border-radius: 4px;
             transition: width 0.5s ease;
         }
@@ -323,13 +326,22 @@
             background-color: var(--primary-dark);
         }
 
-        .btn-ai {
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+        .btn-ecosystem {
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
             color: white;
         }
 
-        .btn-ai:hover {
-            background: linear-gradient(135deg, var(--ai-purple), #7c3aed);
+        .btn-ecosystem:hover {
+            background: linear-gradient(135deg, #16a34a, #4f46e5);
+        }
+
+        .btn-marketplace {
+            background: linear-gradient(135deg, var(--marketplace-orange), #eab308);
+            color: white;
+        }
+
+        .btn-marketplace:hover {
+            background: linear-gradient(135deg, #ea580c, #ca8a04);
         }
 
         .btn-outline {
@@ -342,15 +354,15 @@
             background-color: var(--bg-secondary);
         }
 
-        /* AI Specific Styles */
-        .ai-grid {
+        /* Ecosystem Specific Styles */
+        .ecosystem-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 1.5rem;
         }
 
-        .ai-card {
-            background: linear-gradient(135deg, var(--bg-card), rgba(139, 92, 246, 0.05));
+        .ecosystem-card {
+            background: linear-gradient(135deg, var(--bg-card), rgba(34, 197, 94, 0.05));
             border-radius: 12px;
             padding: 1.5rem;
             border: 1px solid var(--border);
@@ -358,142 +370,97 @@
             overflow: hidden;
         }
 
-        .ai-card::before {
+        .ecosystem-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--ai-purple), var(--ai-blue));
+            background: linear-gradient(90deg, var(--ecosystem-green), var(--mobile-indigo));
         }
 
-        .ai-model-card {
-            background: linear-gradient(135deg, var(--bg-card), rgba(6, 182, 212, 0.05));
-            border-radius: 10px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--ai-blue);
-        }
-
-        .behavioral-card {
-            background: linear-gradient(135deg, var(--bg-card), rgba(139, 92, 246, 0.05));
-            border-radius: 10px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--ai-purple);
-        }
-
-        /* NLP Chat Interface */
-        .nlp-chat-container {
-            max-height: 500px;
-            overflow-y: auto;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            background: var(--bg-secondary);
-        }
-
-        .chat-message {
-            margin-bottom: 1rem;
-            padding: 1rem;
+        .marketplace-card {
+            background: linear-gradient(135deg, var(--bg-card), rgba(249, 115, 22, 0.05));
             border-radius: 12px;
-            max-width: 80%;
-        }
-
-        .user-message {
-            background: linear-gradient(135deg, var(--ai-blue), var(--primary));
-            color: white;
-            margin-left: auto;
-            border-bottom-right-radius: 4px;
-        }
-
-        .ai-message {
-            background: var(--bg-card);
+            padding: 1.5rem;
             border: 1px solid var(--border);
-            border-bottom-left-radius: 4px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .message-time {
-            font-size: 0.7rem;
-            opacity: 0.7;
-            margin-top: 5px;
+        .marketplace-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--marketplace-orange), #eab308);
         }
 
-        /* Machine Learning Models */
-        .model-grid {
+        /* Marketplace Styles */
+        .marketplace-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
         }
 
-        .model-card {
+        .app-card {
             background: var(--bg-card);
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid var(--border);
-            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .model-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--ecosystem-green);
         }
 
-        /* Behavioral Biometrics */
-        .biometrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .biometric-card {
-            background: var(--bg-card);
-            border-radius: 10px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-
-        .biometric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: var(--ai-purple);
-        }
-
-        /* Self-Learning Progress */
-        .learning-progress {
-            background: linear-gradient(135deg, var(--bg-card), var(--bg-secondary));
-            border-radius: 10px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-        }
-
-        .learning-metric {
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
+            color: white;
         }
 
-        /* Threat Intelligence */
-        .threat-intel-grid {
+        .app-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0.5rem 0;
+        }
+
+        .star {
+            color: #fbbf24;
+        }
+
+        /* Integration Styles */
+        .integration-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .threat-card {
+        .integration-card {
             background: var(--bg-card);
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid var(--border);
+            border-left: 4px solid var(--ecosystem-green);
         }
 
-        .threat-level {
+        .integration-status {
             display: inline-block;
             padding: 4px 8px;
             border-radius: 4px;
@@ -501,28 +468,143 @@
             font-weight: 600;
         }
 
-        .threat-low { background: rgba(16, 185, 129, 0.1); color: var(--success); }
-        .threat-medium { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
-        .threat-high { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
-        .threat-critical { background: rgba(139, 92, 246, 0.1); color: var(--ai-purple); }
+        .status-connected { background: rgba(34, 197, 94, 0.1); color: var(--ecosystem-green); }
+        .status-pending { background: rgba(249, 115, 22, 0.1); color: var(--marketplace-orange); }
+        .status-disconnected { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
 
-        /* Cognitive Analysis */
-        .cognitive-grid {
+        /* Mobile App Styles */
+        .mobile-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .mobile-card {
+            background: linear-gradient(135deg, var(--bg-card), rgba(99, 102, 241, 0.05));
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .mobile-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--mobile-indigo);
+        }
+
+        /* API Ecosystem Styles */
+        .api-ecosystem-grid {
             display: grid;
             grid-template-columns: 2fr 1fr;
             gap: 1.5rem;
         }
 
-        .cognitive-card {
+        .api-stats-card {
             background: var(--bg-card);
             border-radius: 10px;
             padding: 1.5rem;
             border: 1px solid var(--border);
         }
 
-        /* Phase 6 AI Badge */
+        /* Partner Network */
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .partner-card {
+            background: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .partner-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+        }
+
+        /* Ecosystem Activity */
+        .ecosystem-activity {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .activity-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .activity-icon.marketplace { background-color: rgba(249, 115, 22, 0.1); color: var(--marketplace-orange); }
+        .activity-icon.integration { background-color: rgba(34, 197, 94, 0.1); color: var(--ecosystem-green); }
+        .activity-icon.mobile { background-color: rgba(99, 102, 241, 0.1); color: var(--mobile-indigo); }
+        .activity-icon.api { background-color: rgba(37, 99, 235, 0.1); color: var(--primary); }
+
+        /* Ecosystem Engine Status */
+        .ecosystem-status {
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .ecosystem-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ecosystem-stat {
+            text-align: center;
+        }
+
+        .ecosystem-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .ecosystem-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Phase 7 Ecosystem Badge */
         .phase-badge {
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
+            background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));
             color: white;
             padding: 8px 16px;
             border-radius: 20px;
@@ -532,73 +614,6 @@
             align-items: center;
             gap: 8px;
         }
-
-        /* Autonomous Engine Status */
-        .engine-status {
-            background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));
-            color: white;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        .engine-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .engine-stat {
-            text-align: center;
-        }
-
-        .engine-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .engine-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        /* Real-time activity stream */
-        .activity-stream {
-            max-height: 400px;
-            overflow-y: auto;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .activity-item {
-            padding: 0.75rem;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .activity-item:last-child {
-            border-bottom: none;
-        }
-
-        .activity-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-        }
-
-        .activity-icon.ai { background-color: rgba(139, 92, 246, 0.1); color: var(--ai-purple); }
-        .activity-icon.security { background-color: rgba(239, 68, 68, 0.1); color: var(--danger); }
-        .activity-icon.wellness { background-color: rgba(16, 185, 129, 0.1); color: var(--success); }
-        .activity-icon.system { background-color: rgba(37, 99, 235, 0.1); color: var(--primary); }
 
         /* Modal Styles */
         .modal {
@@ -666,7 +681,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .cognitive-grid {
+            .api-ecosystem-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -678,7 +693,7 @@
             <div class="header-content">
                 <div class="logo">
                     <h1>ZaraAI Enterprise</h1>
-                    <span class="status-badge ai">🧠 Phase 6: AI Advancement</span>
+                    <span class="status-badge ecosystem">🌐 Phase 7: Ecosystem Expansion</span>
                 </div>
                 <div class="nav-controls">
                     <button class="theme-toggle" id="themeToggle">🌓</button>
@@ -686,7 +701,7 @@
                         <div class="avatar">MJ</div>
                         <div>
                             <div>MJ Mashifane</div>
-                            <div class="admin-badge">AI Administrator</div>
+                            <div class="admin-badge">Ecosystem Admin</div>
                         </div>
                     </div>
                 </div>
@@ -699,48 +714,48 @@
             <aside class="sidebar">
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" data-page="ai-dashboard">
-                            <i>🧠</i> AI Dashboard
+                        <a href="#" class="nav-link active" data-page="ecosystem-dashboard">
+                            <i>🌐</i> Ecosystem Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="nlp-chat">
-                            <i>💬</i> NLP Assistant
+                        <a href="#" class="nav-link" data-page="marketplace">
+                            <i>🛒</i> Marketplace
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="machine-learning">
-                            <i>🤖</i> ML Models
+                        <a href="#" class="nav-link" data-page="integrations">
+                            <i>🔗</i> Integrations
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="behavioral-biometrics">
-                            <i>👤</i> Behavioral AI
+                        <a href="#" class="nav-link" data-page="mobile-apps">
+                            <i>📱</i> Mobile Ecosystem
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="threat-intelligence">
-                            <i>🔍</i> AI Threat Intel
+                        <a href="#" class="nav-link" data-page="api-ecosystem">
+                            <i>🔧</i> API Ecosystem
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="cognitive-security">
-                            <i>⚡</i> Cognitive Security
+                        <a href="#" class="nav-link" data-page="partner-network">
+                            <i>🤝</i> Partner Network
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="self-learning">
-                            <i>🔄</i> Self-Learning
+                        <a href="#" class="nav-link" data-page="third-party">
+                            <i>🔄</i> Third-Party Apps
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="multi-tenant">
-                            <i>🏢</i> Multi-Tenant
+                        <a href="#" class="nav-link" data-page="cross-platform">
+                            <i>💻</i> Cross-Platform
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-page="compliance">
-                            <i>📋</i> Compliance
+                        <a href="#" class="nav-link" data-page="ai-dashboard">
+                            <i>🧠</i> AI Systems
                         </a>
                     </li>
                     <li class="nav-item">
@@ -752,671 +767,745 @@
             </aside>
 
             <main class="main-content" id="mainContent">
-                <!-- AI Dashboard Page -->
-                <div class="page-content active" id="ai-dashboard-page">
+                <!-- Ecosystem Dashboard Page -->
+                <div class="page-content active" id="ecosystem-dashboard-page">
                     <div class="page-header">
-                        <h1 class="page-title">AI Advancement Dashboard</h1>
+                        <h1 class="page-title">Ecosystem Expansion Dashboard</h1>
                         <div>
-                            <span class="phase-badge">Phase 6: Advanced AI Systems Active</span>
+                            <span class="phase-badge">Phase 7: Global Ecosystem Active</span>
                         </div>
                     </div>
 
-                    <!-- Welcome AI Admin Section -->
+                    <!-- Welcome Ecosystem Admin Section -->
                     <div class="card">
                         <div class="card-body">
                             <div style="display: flex; align-items: center; gap: 20px;">
-                                <div class="avatar" style="width: 80px; height: 80px; font-size: 1.5rem; background: linear-gradient(135deg, var(--ai-purple), var(--ai-blue));">MJ</div>
+                                <div class="avatar" style="width: 80px; height: 80px; font-size: 1.5rem; background: linear-gradient(135deg, var(--ecosystem-green), var(--mobile-indigo));">MJ</div>
                                 <div>
-                                    <h2 style="margin-bottom: 5px;">Welcome to AI Command, MJ Mashifane! 🧠</h2>
-                                    <p style="color: var(--text-secondary); margin-bottom: 10px;">AI Systems Administrator • Neural Networks: ACTIVE</p>
+                                    <h2 style="margin-bottom: 5px;">Welcome to Ecosystem Command, MJ Mashifane! 🌐</h2>
+                                    <p style="color: var(--text-secondary); margin-bottom: 10px;">Ecosystem Administrator • Global Integrations: ACTIVE</p>
                                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                                        <span class="badge badge-primary">Deep Learning</span>
-                                        <span class="badge badge-success">NLP Engine</span>
-                                        <span class="badge badge-warning">Behavioral AI</span>
-                                        <span class="badge badge-danger">Threat Prediction</span>
-                                        <span class="badge" style="background: rgba(139, 92, 246, 0.1); color: var(--ai-purple);">Cognitive Security</span>
+                                        <span class="badge badge-primary">Marketplace</span>
+                                        <span class="badge badge-success">47 Integrations</span>
+                                        <span class="badge badge-warning">Mobile Apps</span>
+                                        <span class="badge badge-danger">API Ecosystem</span>
+                                        <span class="badge" style="background: rgba(34, 197, 94, 0.1); color: var(--ecosystem-green);">Partner Network</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- AI Engine Status -->
-                    <div class="engine-status">
-                        <h2>🧠 Advanced AI Engine - NEURAL MODE</h2>
-                        <p>Deep learning, NLP, and cognitive computing systems operational across all tenants</p>
-                        <div class="engine-stats">
-                            <div class="engine-stat">
-                                <div class="engine-value" id="aiAutomationLevel">78%</div>
-                                <div class="engine-label">AI Automation</div>
+                    <!-- Ecosystem Engine Status -->
+                    <div class="ecosystem-status">
+                        <h2>🌐 Global Ecosystem Engine - EXPANDED MODE</h2>
+                        <p>Marketplace, integrations, mobile apps, and partner networks operational worldwide</p>
+                        <div class="ecosystem-stats">
+                            <div class="ecosystem-stat">
+                                <div class="ecosystem-value" id="ecosystemApps">127</div>
+                                <div class="ecosystem-label">Total Apps</div>
                             </div>
-                            <div class="engine-stat">
-                                <div class="engine-value" id="aiActionsTaken">89</div>
-                                <div class="engine-label">AI Actions</div>
+                            <div class="ecosystem-stat">
+                                <div class="ecosystem-value" id="activeIntegrations">47</div>
+                                <div class="ecosystem-label">Integrations</div>
                             </div>
-                            <div class="engine-stat">
-                                <div class="engine-value" id="aiModelsActive">12</div>
-                                <div class="engine-label">ML Models</div>
+                            <div class="ecosystem-stat">
+                                <div class="ecosystem-value" id="marketplaceUsers">15.2K</div>
+                                <div class="ecosystem-label">Marketplace Users</div>
                             </div>
-                            <div class="engine-stat">
-                                <div class="engine-value" id="aiAccuracy">96.2%</div>
-                                <div class="engine-label">AI Accuracy</div>
+                            <div class="ecosystem-stat">
+                                <div class="ecosystem-value" id="apiCalls">2.1M</div>
+                                <div class="ecosystem-label">API Calls/Day</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- AI Systems Overview -->
+                    <!-- Ecosystem Overview -->
                     <div class="dashboard-grid">
-                        <div class="ai-card">
-                            <h3>🧠 Neural Network Systems</h3>
-                            <p>Deep learning models for threat detection and behavioral analysis</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 92%"></div>
-                            </div>
-                            <div style="margin-top: 1rem;">
-                                <span class="badge badge-success">8 Models Active</span>
-                                <span class="badge badge-primary">96.2% Accuracy</span>
-                            </div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3>💬 Natural Language Processing</h3>
-                            <p>Advanced NLP for security analysis and user interactions</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 88%"></div>
-                            </div>
-                            <div style="margin-top: 1rem;">
-                                <span class="badge badge-success">Multi-language</span>
-                                <span class="badge badge-primary">Context Aware</span>
-                            </div>
-                        </div>
-
-                        <div class="ai-card">
-                            <h3>👤 Behavioral Biometrics</h3>
-                            <p>AI-driven user behavior analysis and anomaly detection</p>
+                        <div class="ecosystem-card">
+                            <h3>🛒 Marketplace Hub</h3>
+                            <p>127 applications available with 15.2K active users</p>
                             <div class="progress-bar">
                                 <div class="progress-fill" style="width: 85%"></div>
                             </div>
                             <div style="margin-top: 1rem;">
-                                <span class="badge badge-success">243 Users</span>
-                                <span class="badge badge-primary">94% Accuracy</span>
+                                <span class="badge badge-success">45 New Apps</span>
+                                <span class="badge badge-primary">4.8★ Rating</span>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Real-time AI Activity Stream -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">🔄 AI Neural Activity Stream</h2>
-                            <span class="badge badge-primary">Live AI Processing</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="activity-stream" id="aiActivityStream">
-                                <div class="activity-item">
-                                    <div class="activity-icon ai">🧠</div>
-                                    <div>
-                                        <div>Neural network detected behavioral anomaly - User_TA_42</div>
-                                        <small>Just now • Behavioral AI • 96.7% confidence</small>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon ai">💬</div>
-                                    <div>
-                                        <div>NLP processed security query - 3.2s response time</div>
-                                        <small>2 minutes ago • NLP Engine • 94.1% accuracy</small>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon security">🛡️</div>
-                                    <div>
-                                        <div>AI threat prediction model updated with new data</div>
-                                        <small>5 minutes ago • ML System • 12,847 features</small>
-                                    </div>
-                                </div>
-                                <div class="activity-item">
-                                    <div class="activity-icon ai">⚡</div>
-                                    <div>
-                                        <div>Cognitive security analysis completed - Tenant B</div>
-                                        <small>8 minutes ago • Cognitive AI • 98.3% confidence</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- AI Performance Metrics -->
-                    <div class="dashboard-grid">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">🤖 Machine Learning Performance</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="stats-grid">
-                                    <div class="stat-card">
-                                        <div class="stat-value">96.2%</div>
-                                        <div class="stat-label">Model Accuracy</div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-value">2.3ms</div>
-                                        <div class="stat-label">Avg Inference</div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-value">12</div>
-                                        <div class="stat-label">Active Models</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <button class="btn btn-ecosystem" onclick="showPage('marketplace')" style="margin-top: 1rem;">
+                                <i>🛒</i> Explore Marketplace
+                            </button>
                         </div>
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">💬 NLP System Metrics</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="stats-grid">
-                                    <div class="stat-card">
-                                        <div class="stat-value">94.1%</div>
-                                        <div class="stat-label">Intent Accuracy</div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-value">3.2s</div>
-                                        <div class="stat-label">Avg Response</div>
-                                    </div>
-                                    <div class="stat-card">
-                                        <div class="stat-value">8</div>
-                                        <div class="stat-label">Languages</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- NLP Chat Assistant Page -->
-                <div class="page-content" id="nlp-chat-page">
-                    <div class="page-header">
-                        <h1 class="page-title">💬 Advanced NLP Assistant</h1>
-                        <button class="btn btn-ai" onclick="startNewChat()">
-                            <i>🔄</i> New Conversation
-                        </button>
-                    </div>
-
-                    <div class="cognitive-grid">
-                        <div class="cognitive-card">
-                            <h3>AI Security Assistant</h3>
-                            <p>Natural language processing for security analysis and guidance</p>
-                            
-                            <div class="nlp-chat-container" id="nlpChat">
-                                <div class="chat-message ai-message">
-                                    <div>Hello MJ! I'm your AI Security Assistant. I can help you analyze security threats, review compliance status, optimize system performance, or answer any cybersecurity questions you have. What would you like to discuss?</div>
-                                    <div class="message-time">AI Assistant • Just now</div>
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="margin-top: 1rem;">
-                                <div style="display: flex; gap: 10px;">
-                                    <input type="text" class="form-control" id="nlpInput" placeholder="Ask about security, compliance, or system optimization...">
-                                    <button class="btn btn-ai" onclick="sendNLPMessage()">
-                                        <i>📤</i> Send
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div style="margin-top: 1rem; display: flex; gap: 10px; flex-wrap: wrap;">
-                                <button class="btn btn-outline" onclick="quickQuestion('Analyze current threat landscape')">
-                                    🛡️ Threat Analysis
-                                </button>
-                                <button class="btn btn-outline" onclick="quickQuestion('Compliance status overview')">
-                                    📋 Compliance Check
-                                </button>
-                                <button class="btn btn-outline" onclick="quickQuestion('System performance optimization')">
-                                    ⚡ Performance
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="cognitive-card">
-                            <h3>NLP System Status</h3>
-                            <div style="margin-top: 1.5rem;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                    <span>Intent Recognition</span>
-                                    <span class="badge badge-success">94.1%</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                    <span>Response Accuracy</span>
-                                    <span class="badge badge-success">92.8%</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                    <span>Processing Speed</span>
-                                    <span class="badge badge-success">3.2s avg</span>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                    <span>Language Support</span>
-                                    <span class="badge badge-primary">8 languages</span>
-                                </div>
-                            </div>
-
-                            <div style="margin-top: 2rem;">
-                                <h4>Recent Conversations</h4>
-                                <div style="margin-top: 1rem;">
-                                    <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                                        <div>Threat analysis request</div>
-                                        <small style="color: var(--text-secondary);">2 hours ago • 96% relevant</small>
-                                    </div>
-                                    <div style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">
-                                        <div>Compliance guidance</div>
-                                        <small style="color: var(--text-secondary);">4 hours ago • 94% relevant</small>
-                                    </div>
-                                    <div style="padding: 0.5rem 0;">
-                                        <div>System optimization</div>
-                                        <small style="color: var(--text-secondary);">6 hours ago • 92% relevant</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Machine Learning Models Page -->
-                <div class="page-content" id="machine-learning-page">
-                    <div class="page-header">
-                        <h1 class="page-title">🤖 Machine Learning Models</h1>
-                        <button class="btn btn-ai" onclick="showModal('trainModelModal')">
-                            <i>🎯</i> Train New Model
-                        </button>
-                    </div>
-
-                    <div class="model-grid">
-                        <div class="model-card">
-                            <div class="model-icon">🛡️</div>
-                            <h3>Threat Detection</h3>
-                            <p>Neural network for real-time threat identification</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 96%"></div>
-                            </div>
-                            <div style="margin: 1rem 0;">
-                                <span class="badge badge-success">97.2% Accuracy</span>
-                                <span class="badge badge-primary">Active</span>
-                            </div>
-                            <button class="btn btn-outline">View Details</button>
-                        </div>
-
-                        <div class="model-card">
-                            <div class="model-icon">👤</div>
-                            <h3>Behavioral Analysis</h3>
-                            <p>User behavior pattern recognition</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 94%"></div>
-                            </div>
-                            <div style="margin: 1rem 0;">
-                                <span class="badge badge-success">94.8% Accuracy</span>
-                                <span class="badge badge-primary">Active</span>
-                            </div>
-                            <button class="btn btn-outline">View Details</button>
-                        </div>
-
-                        <div class="model-card">
-                            <div class="model-icon">📊</div>
-                            <h3>Risk Prediction</h3>
-                            <p>Predictive risk scoring algorithm</p>
+                        <div class="ecosystem-card">
+                            <h3>🔗 Integration Network</h3>
+                            <p>47 active integrations across security, productivity, and business tools</p>
                             <div class="progress-bar">
                                 <div class="progress-fill" style="width: 92%"></div>
                             </div>
-                            <div style="margin: 1rem 0;">
-                                <span class="badge badge-success">92.1% Accuracy</span>
-                                <span class="badge badge-primary">Active</span>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-success">32 Connected</span>
+                                <span class="badge badge-warning">15 Pending</span>
                             </div>
-                            <button class="btn btn-outline">View Details</button>
+                            <button class="btn btn-ecosystem" onclick="showPage('integrations')" style="margin-top: 1rem;">
+                                <i>🔗</i> Manage Integrations
+                            </button>
                         </div>
 
-                        <div class="model-card">
-                            <div class="model-icon">🔮</div>
-                            <h3>Threat Forecasting</h3>
-                            <p>AI-powered threat prediction</p>
+                        <div class="ecosystem-card">
+                            <h3>📱 Mobile Ecosystem</h3>
+                            <p>Cross-platform mobile applications with 8.7K active mobile users</p>
                             <div class="progress-bar">
-                                <div class="progress-fill" style="width: 89%"></div>
+                                <div class="progress-fill" style="width: 78%"></div>
                             </div>
-                            <div style="margin: 1rem 0;">
-                                <span class="badge badge-warning">89.5% Accuracy</span>
-                                <span class="badge badge-primary">Active</span>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-success">iOS & Android</span>
+                                <span class="badge badge-primary">Real-time Sync</span>
                             </div>
-                            <button class="btn btn-outline">View Details</button>
-                        </div>
-
-                        <div class="model-card">
-                            <div class="model-icon">😊</div>
-                            <h3>Wellness Analysis</h3>
-                            <p>Team stress and wellness monitoring</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 91%"></div>
-                            </div>
-                            <div style="margin: 1rem 0;">
-                                <span class="badge badge-success">91.3% Accuracy</span>
-                                <span class="badge badge-primary">Active</span>
-                            </div>
-                            <button class="btn btn-outline">View Details</button>
-                        </div>
-
-                        <div class="model-card">
-                            <div class="model-icon">⚡</div>
-                            <h3>Performance Optimization</h3>
-                            <p>System performance AI</p>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 87%"></div>
-                            </div>
-                            <div style="margin: 1rem 0;">
-                                <span class="badge badge-warning">87.9% Accuracy</span>
-                                <span class="badge badge-primary">Active</span>
-                            </div>
-                            <button class="btn btn-outline">View Details</button>
+                            <button class="btn btn-ecosystem" onclick="showPage('mobile-apps')" style="margin-top: 1rem;">
+                                <i>📱</i> Mobile Dashboard
+                            </button>
                         </div>
                     </div>
 
-                    <div class="card" style="margin-top: 2rem;">
+                    <!-- Real-time Ecosystem Activity Stream -->
+                    <div class="card">
                         <div class="card-header">
-                            <h2 class="card-title">Model Training Progress</h2>
+                            <h2 class="card-title">🔄 Global Ecosystem Activity</h2>
+                            <span class="badge badge-primary">Live Ecosystem Data</span>
                         </div>
                         <div class="card-body">
-                            <div class="learning-progress">
-                                <div class="learning-metric">
-                                    <span>Threat Detection Model</span>
-                                    <span class="badge badge-success">Training: 92%</span>
+                            <div class="ecosystem-activity" id="ecosystemActivityStream">
+                                <div class="activity-item">
+                                    <div class="activity-icon marketplace">🛒</div>
+                                    <div>
+                                        <div>New app "Threat Intelligence Pro" published to marketplace</div>
+                                        <small>Just now • SecurityAI Labs • 4.9★ rating</small>
+                                    </div>
                                 </div>
-                                <div class="learning-metric">
-                                    <span>Behavioral Analysis Model</span>
-                                    <span class="badge badge-warning">Training: 78%</span>
+                                <div class="activity-item">
+                                    <div class="activity-icon integration">🔗</div>
+                                    <div>
+                                        <div>Slack integration activated for Tenant C - 342 users</div>
+                                        <small>2 minutes ago • Integration Engine • Real-time alerts</small>
+                                    </div>
                                 </div>
-                                <div class="learning-metric">
-                                    <span>Risk Prediction Model</span>
-                                    <span class="badge badge-success">Training: 95%</span>
+                                <div class="activity-item">
+                                    <div class="activity-icon mobile">📱</div>
+                                    <div>
+                                        <div>Mobile app update v2.3.1 released - 1.2K downloads</div>
+                                        <small>5 minutes ago • Mobile Ecosystem • iOS & Android</small>
+                                    </div>
                                 </div>
-                                <div class="learning-metric">
-                                    <span>New: Phishing Detection</span>
-                                    <span class="badge badge-warning">Training: 65%</span>
+                                <div class="activity-item">
+                                    <div class="activity-icon api">🔧</div>
+                                    <div>
+                                        <div>API usage spike detected - 15K requests in last hour</div>
+                                        <small>8 minutes ago • API Gateway • Auto-scaled</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ecosystem Performance Metrics -->
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">🛒 Marketplace Performance</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-value">127</div>
+                                        <div class="stat-label">Total Apps</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-value">15.2K</div>
+                                        <div class="stat-label">Active Users</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-value">4.8★</div>
+                                        <div class="stat-label">Avg Rating</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">🔗 Integration Network</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="stats-grid">
+                                    <div class="stat-card">
+                                        <div class="stat-value">47</div>
+                                        <div class="stat-label">Integrations</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-value">32</div>
+                                        <div class="stat-label">Connected</div>
+                                    </div>
+                                    <div class="stat-card">
+                                        <div class="stat-value">98.7%</div>
+                                        <div class="stat-label">Uptime</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Behavioral Biometrics Page -->
-                <div class="page-content" id="behavioral-biometrics-page">
+                <!-- Marketplace Page -->
+                <div class="page-content" id="marketplace-page">
                     <div class="page-header">
-                        <h1 class="page-title">👤 Behavioral Biometrics AI</h1>
-                        <button class="btn btn-ai">
-                            <i>📊</i> Generate Report
+                        <h1 class="page-title">🛒 ZaraAI Marketplace</h1>
+                        <button class="btn btn-marketplace" onclick="showModal('publishAppModal')">
+                            <i>🚀</i> Publish New App
                         </button>
                     </div>
 
-                    <div class="biometrics-grid">
-                        <div class="biometric-card">
-                            <h3>Typing Patterns</h3>
-                            <p>Keystroke dynamics analysis</p>
-                            <div class="biometric-value">96.4%</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 96%"></div>
+                    <div class="marketplace-grid">
+                        <div class="app-card" onclick="showAppDetails('threat-intel-pro')">
+                            <div class="app-icon">🛡️</div>
+                            <h3>Threat Intelligence Pro</h3>
+                            <p>Advanced threat detection and intelligence platform</p>
+                            <div class="app-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>4.9 (247)</span>
                             </div>
-                            <span class="badge badge-success">Accurate</span>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-success">Security</span>
+                                <span class="badge badge-primary">AI-Powered</span>
+                            </div>
+                            <div style="margin-top: 1rem; font-weight: 600; color: var(--ecosystem-green);">
+                                $49/month
+                            </div>
                         </div>
 
-                        <div class="biometric-card">
-                            <h3>Mouse Movements</h3>
-                            <p>Cursor behavior analysis</p>
-                            <div class="biometric-value">93.7%</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 94%"></div>
+                        <div class="app-card" onclick="showAppDetails('compliance-manager')">
+                            <div class="app-icon">📋</div>
+                            <h3>Compliance Manager</h3>
+                            <p>Automated compliance tracking and reporting</p>
+                            <div class="app-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>4.8 (189)</span>
                             </div>
-                            <span class="badge badge-success">Accurate</span>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-warning">Compliance</span>
+                                <span class="badge badge-primary">Automation</span>
+                            </div>
+                            <div style="margin-top: 1rem; font-weight: 600; color: var(--ecosystem-green);">
+                                $79/month
+                            </div>
                         </div>
 
-                        <div class="biometric-card">
-                            <h3>Navigation Patterns</h3>
-                            <p>User interaction flows</p>
-                            <div class="biometric-value">91.2%</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 91%"></div>
+                        <div class="app-card" onclick="showAppDetails('wellness-tracker')">
+                            <div class="app-icon">😊</div>
+                            <h3>Wellness Tracker</h3>
+                            <p>Employee wellness and stress monitoring</p>
+                            <div class="app-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">☆</span>
+                                <span>4.7 (156)</span>
                             </div>
-                            <span class="badge badge-success">Accurate</span>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-success">Wellness</span>
+                                <span class="badge badge-primary">Analytics</span>
+                            </div>
+                            <div style="margin-top: 1rem; font-weight: 600; color: var(--ecosystem-green);">
+                                $29/month
+                            </div>
                         </div>
 
-                        <div class="biometric-card">
-                            <h3>Session Timing</h3>
-                            <p>Usage time patterns</p>
-                            <div class="biometric-value">89.8%</div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 90%"></div>
+                        <div class="app-card" onclick="showAppDetails('api-analytics')">
+                            <div class="app-icon">📊</div>
+                            <h3>API Analytics Pro</h3>
+                            <p>Advanced API performance and usage analytics</p>
+                            <div class="app-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">☆</span>
+                                <span>4.6 (134)</span>
                             </div>
-                            <span class="badge badge-warning">Good</span>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-primary">Analytics</span>
+                                <span class="badge badge-success">API</span>
+                            </div>
+                            <div style="margin-top: 1rem; font-weight: 600; color: var(--ecosystem-green);">
+                                $39/month
+                            </div>
+                        </div>
+
+                        <div class="app-card" onclick="showAppDetails('mobile-security')">
+                            <div class="app-icon">📱</div>
+                            <h3>Mobile Security Suite</h3>
+                            <p>Comprehensive mobile device security</p>
+                            <div class="app-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span>4.9 (201)</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-danger">Security</span>
+                                <span class="badge badge-primary">Mobile</span>
+                            </div>
+                            <div style="margin-top: 1rem; font-weight: 600; color: var(--ecosystem-green);">
+                                $59/month
+                            </div>
+                        </div>
+
+                        <div class="app-card" onclick="showAppDetails('automation-hub')">
+                            <div class="app-icon">⚡</div>
+                            <h3>Automation Hub</h3>
+                            <p>Workflow automation and orchestration</p>
+                            <div class="app-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">☆</span>
+                                <span>4.7 (178)</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="badge badge-warning">Automation</span>
+                                <span class="badge badge-primary">Productivity</span>
+                            </div>
+                            <div style="margin-top: 1rem; font-weight: 600; color: var(--ecosystem-green);">
+                                $69/month
+                            </div>
                         </div>
                     </div>
 
                     <div class="card" style="margin-top: 2rem;">
                         <div class="card-header">
-                            <h2 class="card-title">Behavioral Anomaly Detection</h2>
+                            <h2 class="card-title">Marketplace Analytics</h2>
                         </div>
                         <div class="card-body">
-                            <div class="dashboard-grid">
-                                <div class="behavioral-card">
-                                    <h3>Recent Anomalies</h3>
-                                    <p>AI-detected behavioral deviations</p>
-                                    <div style="margin-top: 1rem;">
-                                        <div style="padding: 0.75rem; background: rgba(239, 68, 68, 0.1); border-radius: 6px; margin-bottom: 0.5rem;">
-                                            <div><strong>High risk</strong> - Unusual login pattern detected</div>
-                                            <small>User_TA_42 • 96.7% confidence</small>
-                                        </div>
-                                        <div style="padding: 0.75rem; background: rgba(245, 158, 11, 0.1); border-radius: 6px;">
-                                            <div><strong>Medium risk</strong> - Atypical navigation behavior</div>
-                                            <small>User_TB_15 • 87.3% confidence</small>
-                                        </div>
-                                    </div>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value">$42.8K</div>
+                                    <div class="stat-label">Monthly Revenue</div>
                                 </div>
-
-                                <div class="behavioral-card">
-                                    <h3>Behavioral Baselines</h3>
-                                    <p>Established user behavior patterns</p>
-                                    <div style="margin-top: 1rem;">
-                                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                            <span>Normal Patterns</span>
-                                            <span class="badge badge-success">243 users</span>
-                                        </div>
-                                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                                            <span>Learning Phase</span>
-                                            <span class="badge badge-warning">12 users</span>
-                                        </div>
-                                        <div style="display: flex; justify-content: space-between;">
-                                            <span>Anomalies Detected</span>
-                                            <span class="badge badge-danger">2 users</span>
-                                        </div>
-                                    </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">127</div>
+                                    <div class="stat-label">Active Apps</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">45</div>
+                                    <div class="stat-label">New This Month</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">15.2K</div>
+                                    <div class="stat-label">Active Users</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Additional Phase 6 pages would continue here -->
-                <!-- Threat Intelligence, Cognitive Security, Self-Learning pages -->
+                <!-- Integrations Page -->
+                <div class="page-content" id="integrations-page">
+                    <div class="page-header">
+                        <h1 class="page-title">🔗 Integration Network</h1>
+                        <button class="btn btn-ecosystem" onclick="showModal('newIntegrationModal')">
+                            <i>➕</i> Add Integration
+                        </button>
+                    </div>
+
+                    <div class="integration-grid">
+                        <div class="integration-card">
+                            <h3>Slack</h3>
+                            <p>Real-time security alerts and team collaboration</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="integration-status status-connected">Connected</span>
+                                <span class="badge badge-primary">342 users</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <small>Last sync: 2 minutes ago</small>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <h3>Microsoft Teams</h3>
+                            <p>Enterprise communication and alerting</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="integration-status status-connected">Connected</span>
+                                <span class="badge badge-primary">287 users</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <small>Last sync: 5 minutes ago</small>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <h3>Jira</h3>
+                            <p>Security issue tracking and project management</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="integration-status status-connected">Connected</span>
+                                <span class="badge badge-primary">156 projects</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <small>Last sync: 8 minutes ago</small>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <h3>Salesforce</h3>
+                            <p>CRM integration for security insights</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="integration-status status-pending">Configuring</span>
+                                <span class="badge badge-warning">In progress</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <small>ETA: 2 days</small>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <h3>ServiceNow</h3>
+                            <p>IT service management and ticketing</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="integration-status status-connected">Connected</span>
+                                <span class="badge badge-primary">89 workflows</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <small>Last sync: 12 minutes ago</small>
+                            </div>
+                        </div>
+
+                        <div class="integration-card">
+                            <h3>Zoom</h3>
+                            <p>Video conferencing and meeting security</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <span class="integration-status status-pending">Testing</span>
+                                <span class="badge badge-warning">Beta</span>
+                            </div>
+                            <div style="margin-top: 1rem;">
+                                <small>ETA: 1 week</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Apps Page -->
+                <div class="page-content" id="mobile-apps-page">
+                    <div class="page-header">
+                        <h1 class="page-title">📱 Mobile Ecosystem</h1>
+                        <button class="btn btn-ecosystem">
+                            <i>📲</i> App Analytics
+                        </button>
+                    </div>
+
+                    <div class="mobile-grid">
+                        <div class="mobile-card">
+                            <div class="mobile-icon">📱</div>
+                            <h3>iOS App</h3>
+                            <p>Native iOS application</p>
+                            <div class="stat-value">4.8★</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 95%"></div>
+                            </div>
+                            <span class="badge badge-success">v2.3.1</span>
+                        </div>
+
+                        <div class="mobile-card">
+                            <div class="mobile-icon">🤖</div>
+                            <h3>Android App</h3>
+                            <p>Native Android application</p>
+                            <div class="stat-value">4.7★</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 92%"></div>
+                            </div>
+                            <span class="badge badge-success">v2.3.0</span>
+                        </div>
+
+                        <div class="mobile-card">
+                            <div class="mobile-icon">🌐</div>
+                            <h3>PWA</h3>
+                            <p>Progressive Web App</p>
+                            <div class="stat-value">4.6★</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 88%"></div>
+                            </div>
+                            <span class="badge badge-success">v2.2.8</span>
+                        </div>
+
+                        <div class="mobile-card">
+                            <div class="mobile-icon">⌚</div>
+                            <h3>Watch App</h3>
+                            <p>Apple Watch companion</p>
+                            <div class="stat-value">4.5★</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 78%"></div>
+                            </div>
+                            <span class="badge badge-warning">v1.2.1</span>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 2rem;">
+                        <div class="card-header">
+                            <h2 class="card-title">Mobile Usage Analytics</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-value">8.7K</div>
+                                    <div class="stat-label">Active Users</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">1.2K</div>
+                                    <div class="stat-label">Daily Sessions</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">4.7★</div>
+                                    <div class="stat-label">Avg Rating</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-value">98.3%</div>
+                                    <div class="stat-label">Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Phase 7 pages would continue here -->
+                <!-- API Ecosystem, Partner Network, Third-Party Apps, Cross-Platform -->
 
             </main>
         </div>
     </div>
 
-    <!-- Modals for Phase 6 AI Features -->
-    <div class="modal" id="trainModelModal">
+    <!-- Modals for Phase 7 Ecosystem Features -->
+    <div class="modal" id="publishAppModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 class="modal-title">Train New AI Model</h2>
-                <button class="close-modal" onclick="closeModal('trainModelModal')">&times;</button>
+                <h2 class="modal-title">Publish New App</h2>
+                <button class="close-modal" onclick="closeModal('publishAppModal')">&times;</button>
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    <label class="form-label">Model Type</label>
+                    <label class="form-label">App Name</label>
+                    <input type="text" class="form-control" placeholder="Enter app name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Category</label>
                     <select class="form-control">
-                        <option>Threat Detection</option>
-                        <option>Behavioral Analysis</option>
-                        <option>Risk Prediction</option>
-                        <option>Threat Forecasting</option>
-                        <option>Wellness Analysis</option>
-                        <option>Custom Model</option>
+                        <option>Security</option>
+                        <option>Compliance</option>
+                        <option>Wellness</option>
+                        <option>Analytics</option>
+                        <option>Automation</option>
+                        <option>Integration</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Training Data Source</label>
+                    <label class="form-label">Description</label>
+                    <textarea class="form-control" rows="3" placeholder="App description and features..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Pricing Tier</label>
                     <select class="form-control">
-                        <option>Security Logs</option>
-                        <option>User Behavior</option>
-                        <option>Threat Intelligence</option>
-                        <option>System Performance</option>
-                        <option>Custom Dataset</option>
+                        <option>Free</option>
+                        <option>Basic - $29/month</option>
+                        <option>Pro - $59/month</option>
+                        <option>Enterprise - $99/month</option>
+                    </select>
+                </div>
+                <button class="btn btn-marketplace">Publish to Marketplace</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="newIntegrationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Integration</h2>
+                <button class="close-modal" onclick="closeModal('newIntegrationModal')">&times;</button>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="form-label">Integration Type</label>
+                    <select class="form-control">
+                        <option>Communication (Slack, Teams)</option>
+                        <option>Project Management (Jira, Asana)</option>
+                        <option>CRM (Salesforce, HubSpot)</option>
+                        <option>ITSM (ServiceNow, Freshservice)</option>
+                        <option>Cloud Storage (Google Drive, Dropbox)</option>
+                        <option>Custom API</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-label">Model Parameters</label>
-                    <textarea class="form-control" rows="3" placeholder="Additional training parameters..."></textarea>
+                    <label class="form-label">Service Provider</label>
+                    <input type="text" class="form-control" placeholder="e.g., Slack, Jira, Salesforce">
                 </div>
-                <button class="btn btn-ai">Start Training</button>
+                <div class="form-group">
+                    <label class="form-label">API Credentials</label>
+                    <input type="password" class="form-control" placeholder="Enter API key or token">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Configuration</label>
+                    <textarea class="form-control" rows="3" placeholder="Integration configuration details..."></textarea>
+                </div>
+                <button class="btn btn-ecosystem">Connect Integration</button>
             </div>
         </div>
     </div>
 
     <script>
         // =============================================
-        // ZaraAI Phase 6 - Complete AI Advancement
+        // ZaraAI Phase 7 - Complete Ecosystem Expansion
         // =============================================
         
-        // AI Systems State Management
-        const aiSystems = {
-            neuralNetworks: {
-                status: 'ACTIVE',
-                models: 12,
-                accuracy: 96.2,
-                automation: 78,
-                actions: 89
+        // Ecosystem State Management
+        const ecosystemState = {
+            marketplace: {
+                totalApps: 127,
+                activeUsers: 15200,
+                monthlyRevenue: 42800,
+                averageRating: 4.8,
+                newThisMonth: 45
             },
-            nlpEngine: {
-                status: 'ACTIVE',
-                intentAccuracy: 94.1,
-                responseAccuracy: 92.8,
-                processingSpeed: '3.2s',
-                languages: 8
+            integrations: {
+                total: 47,
+                connected: 32,
+                pending: 15,
+                uptime: 98.7
             },
-            behavioralAI: {
-                status: 'ACTIVE',
-                usersProfiled: 243,
-                accuracy: 94.8,
-                anomaliesDetected: 2
+            mobile: {
+                activeUsers: 8700,
+                dailySessions: 1200,
+                averageRating: 4.7,
+                uptime: 98.3,
+                platforms: {
+                    ios: { rating: 4.8, version: '2.3.1' },
+                    android: { rating: 4.7, version: '2.3.0' },
+                    pwa: { rating: 4.6, version: '2.2.8' },
+                    watch: { rating: 4.5, version: '1.2.1' }
+                }
             },
-            machineLearning: {
-                activeModels: [
-                    { name: 'Threat Detection', accuracy: 97.2, status: 'active' },
-                    { name: 'Behavioral Analysis', accuracy: 94.8, status: 'active' },
-                    { name: 'Risk Prediction', accuracy: 92.1, status: 'active' },
-                    { name: 'Threat Forecasting', accuracy: 89.5, status: 'active' },
-                    { name: 'Wellness Analysis', accuracy: 91.3, status: 'active' },
-                    { name: 'Performance Optimization', accuracy: 87.9, status: 'active' }
-                ],
-                trainingProgress: [
-                    { name: 'Threat Detection Model', progress: 92 },
-                    { name: 'Behavioral Analysis Model', progress: 78 },
-                    { name: 'Risk Prediction Model', progress: 95 },
-                    { name: 'Phishing Detection', progress: 65 }
-                ]
+            api: {
+                dailyCalls: 2100000,
+                activeEndpoints: 89,
+                successRate: 99.2,
+                responseTime: '142ms'
             },
-            biometrics: {
-                typingPatterns: 96.4,
-                mouseMovements: 93.7,
-                navigationPatterns: 91.2,
-                sessionTiming: 89.8
+            partners: {
+                total: 23,
+                active: 18,
+                revenueShare: 287000,
+                jointProjects: 45
             }
         };
 
-        // Advanced AI Autonomous Engine
-        const aiAutonomousEngine = {
-            status: 'NEURAL_ACTIVE',
-            automationLevel: 78,
-            actionsTaken: 89,
-            aiModelsActive: 12,
-            aiAccuracy: 96.2,
+        // Ecosystem Autonomous Engine
+        const ecosystemEngine = {
+            status: 'EXPANDED_ACTIVE',
+            totalApps: 127,
+            activeIntegrations: 47,
+            marketplaceUsers: 15200,
+            apiCalls: 2100000,
             
-            scheduleAIAction: function(actionType) {
+            scheduleEcosystemAction: function(actionType) {
                 const actions = {
-                    neural_analysis: {
-                        name: 'Neural Network Security Analysis',
-                        system: 'Neural AI',
-                        icon: 'ai',
-                        description: 'Deep learning threat analysis'
+                    marketplace_update: {
+                        name: 'Marketplace App Update',
+                        system: 'Marketplace Hub',
+                        icon: 'marketplace',
+                        description: 'New app publication or update'
                     },
-                    nlp_processing: {
-                        name: 'NLP Security Query Processing', 
-                        system: 'NLP Engine',
-                        icon: 'ai',
-                        description: 'Natural language security analysis'
+                    integration_sync: {
+                        name: 'Integration Synchronization', 
+                        system: 'Integration Network',
+                        icon: 'integration',
+                        description: 'Third-party service synchronization'
                     },
-                    behavioral_scan: {
-                        name: 'Behavioral Pattern Analysis',
-                        system: 'Behavioral AI', 
-                        icon: 'ai',
-                        description: 'User behavior anomaly detection'
+                    mobile_deployment: {
+                        name: 'Mobile App Deployment',
+                        system: 'Mobile Ecosystem', 
+                        icon: 'mobile',
+                        description: 'Mobile application update or deployment'
                     },
-                    model_retraining: {
-                        name: 'AI Model Retraining',
-                        system: 'ML System',
-                        icon: 'ai',
-                        description: 'Machine learning model optimization'
+                    api_management: {
+                        name: 'API Ecosystem Management',
+                        system: 'API Gateway',
+                        icon: 'api',
+                        description: 'API endpoint optimization and scaling'
                     },
-                    threat_prediction: {
-                        name: 'AI Threat Prediction Update',
-                        system: 'Predictive AI',
-                        icon: 'security',
-                        description: 'Advanced threat forecasting'
+                    partner_engagement: {
+                        name: 'Partner Network Engagement',
+                        system: 'Partner Ecosystem',
+                        icon: 'integration',
+                        description: 'Partner collaboration and integration'
                     },
-                    cognitive_analysis: {
-                        name: 'Cognitive Security Analysis',
-                        system: 'Cognitive AI',
-                        icon: 'ai',
-                        description: 'Advanced cognitive computing'
+                    third_party_sync: {
+                        name: 'Third-Party App Synchronization',
+                        system: 'Ecosystem Engine',
+                        icon: 'marketplace',
+                        description: 'External application data sync'
                     }
                 };
                 
                 if (actions[actionType]) {
-                    const delay = Math.random() * 25000 + 8000;
+                    const delay = Math.random() * 20000 + 5000;
                     setTimeout(() => {
-                        this.executeAIAction(actions[actionType]);
+                        this.executeEcosystemAction(actions[actionType]);
                     }, delay);
                 }
             },
             
-            executeAIAction: function(action) {
-                this.actionsTaken++;
-                this.updateAIUI();
-                this.addAIActivityStream(action);
+            executeEcosystemAction: function(action) {
+                this.updateEcosystemMetrics();
+                this.addEcosystemActivityStream(action);
                 
-                // Progressive AI improvement
-                if (this.actionsTaken % 5 === 0 && this.automationLevel < 95) {
-                    this.automationLevel += 1;
-                    this.updateAIUI();
-                }
-                
-                // AI accuracy optimization
-                if (this.actionsTaken % 8 === 0 && this.aiAccuracy < 99.5) {
-                    this.aiAccuracy += 0.1;
-                    this.updateAIUI();
-                }
-                
-                console.log(`🧠 AI Action #${this.actionsTaken}: ${action.name}`);
+                console.log(`🌐 Ecosystem Action: ${action.name}`);
             },
             
-            addAIActivityStream: function(action) {
-                const stream = document.getElementById('aiActivityStream');
-                const confidence = (95 + Math.random() * 4).toFixed(1);
+            addEcosystemActivityStream: function(action) {
+                const stream = document.getElementById('ecosystemActivityStream');
                 
                 const activityItem = document.createElement('div');
                 activityItem.className = 'activity-item';
                 activityItem.innerHTML = `
-                    <div class="activity-icon ${action.icon}">${this.getAIActionIcon(action.icon)}</div>
+                    <div class="activity-icon ${action.icon}">${this.getEcosystemActionIcon(action.icon)}</div>
                     <div>
                         <div>${action.name}</div>
-                        <small>Just now • ${action.system} • ${confidence}% confidence</small>
+                        <small>Just now • ${action.system} • Ecosystem expanded</small>
                     </div>
                 `;
                 
@@ -1426,123 +1515,82 @@
                 }
             },
             
-            getAIActionIcon: function(type) {
+            getEcosystemActionIcon: function(type) {
                 const icons = {
-                    ai: '🧠',
-                    security: '🛡️',
-                    wellness: '😊',
-                    system: '⚡'
+                    marketplace: '🛒',
+                    integration: '🔗',
+                    mobile: '📱',
+                    api: '🔧'
                 };
-                return icons[type] || '🧠';
+                return icons[type] || '🌐';
             },
             
-            updateAIUI: function() {
-                document.getElementById('aiAutomationLevel').textContent = this.automationLevel + '%';
-                document.getElementById('aiActionsTaken').textContent = this.actionsTaken;
-                document.getElementById('aiModelsActive').textContent = this.aiModelsActive;
-                document.getElementById('aiAccuracy').textContent = this.aiAccuracy.toFixed(1) + '%';
+            updateEcosystemMetrics: function() {
+                // Simulate ecosystem growth
+                this.totalApps += Math.floor(Math.random() * 3);
+                this.marketplaceUsers += Math.floor(Math.random() * 50);
+                this.apiCalls += Math.floor(Math.random() * 10000);
+                
+                document.getElementById('ecosystemApps').textContent = this.totalApps;
+                document.getElementById('activeIntegrations').textContent = this.activeIntegrations;
+                document.getElementById('marketplaceUsers').textContent = this.formatNumber(this.marketplaceUsers);
+                document.getElementById('apiCalls').textContent = this.formatNumber(this.apiCalls);
             },
             
-            startAIOperations: function() {
-                console.log('🧠 Starting advanced AI autonomous operations...');
+            formatNumber: function(num) {
+                if (num >= 1000000) {
+                    return (num / 1000000).toFixed(1) + 'M';
+                } else if (num >= 1000) {
+                    return (num / 1000).toFixed(1) + 'K';
+                }
+                return num.toString();
+            },
+            
+            startEcosystemOperations: function() {
+                console.log('🌐 Starting ecosystem expansion operations...');
                 
-                // AI-enhanced scheduling
+                // Ecosystem-wide scheduling
                 setInterval(() => {
-                    this.scheduleAIAction('neural_analysis');
-                }, 120000); // Every 2 minutes
-                
-                setInterval(() => {
-                    this.scheduleAIAction('nlp_processing');
+                    this.scheduleEcosystemAction('marketplace_update');
                 }, 90000); // Every 1.5 minutes
                 
                 setInterval(() => {
-                    this.scheduleAIAction('behavioral_scan');
+                    this.scheduleEcosystemAction('integration_sync');
+                }, 120000); // Every 2 minutes
+                
+                setInterval(() => {
+                    this.scheduleEcosystemAction('mobile_deployment');
                 }, 180000); // Every 3 minutes
                 
                 setInterval(() => {
-                    this.scheduleAIAction('model_retraining');
-                }, 300000); // Every 5 minutes
+                    this.scheduleEcosystemAction('api_management');
+                }, 150000); // Every 2.5 minutes
                 
                 setInterval(() => {
-                    this.scheduleAIAction('threat_prediction');
+                    this.scheduleEcosystemAction('partner_engagement');
                 }, 240000); // Every 4 minutes
                 
                 setInterval(() => {
-                    this.scheduleAIAction('cognitive_analysis');
-                }, 360000); // Every 6 minutes
+                    this.scheduleEcosystemAction('third_party_sync');
+                }, 300000); // Every 5 minutes
             }
         };
 
-        // NLP Chat System
-        const nlpChatSystem = {
-            conversations: [],
+        // Marketplace Functions
+        function showAppDetails(appId) {
+            alert(`Showing details for ${appId}\n\nIn production, this would display comprehensive app information, reviews, installation options, and configuration settings.`);
             
-            sendMessage: function(message) {
-                const chatContainer = document.getElementById('nlpChat');
-                
-                // Add user message
-                const userMessage = document.createElement('div');
-                userMessage.className = 'chat-message user-message';
-                userMessage.innerHTML = `
-                    <div>${message}</div>
-                    <div class="message-time">MJ Mashifane • Just now</div>
-                `;
-                chatContainer.appendChild(userMessage);
-                
-                // Clear input
-                document.getElementById('nlpInput').value = '';
-                
-                // Generate AI response
-                setTimeout(() => {
-                    const aiResponse = this.generateAIResponse(message);
-                    const aiMessage = document.createElement('div');
-                    aiMessage.className = 'chat-message ai-message';
-                    aiMessage.innerHTML = `
-                        <div>${aiResponse}</div>
-                        <div class="message-time">AI Assistant • Just now</div>
-                    `;
-                    chatContainer.appendChild(aiMessage);
-                    chatContainer.scrollTop = chatContainer.scrollHeight;
-                    
-                    // Add to autonomous actions
-                    aiAutonomousEngine.executeAIAction({
-                        name: 'NLP Security Query Processed',
-                        system: 'NLP Engine',
-                        icon: 'ai',
-                        description: 'User security inquiry analysis'
-                    });
-                }, 1500);
-            },
-            
-            generateAIResponse: function(message) {
-                const lowerMessage = message.toLowerCase();
-                
-                if (lowerMessage.includes('threat') || lowerMessage.includes('security')) {
-                    return "Based on my analysis of the current threat landscape, I'm detecting increased phishing attempts targeting financial sectors. Our AI systems have blocked 47 suspicious activities in the last 24 hours. I recommend reviewing the latest threat intelligence report for detailed analysis.";
-                } else if (lowerMessage.includes('compliance') || lowerMessage.includes('audit')) {
-                    return "Our compliance status is strong across all frameworks. SOC2 compliance is at 95%, GDPR at 100%, and ISO 27001 certification is 82% complete. The system has automatically generated compliance reports for all active tenants. Would you like me to prepare a specific compliance document?";
-                } else if (lowerMessage.includes('performance') || lowerMessage.includes('optimize')) {
-                    return "System performance is optimal with 99.2% uptime across all tenants. The AI has identified potential optimizations in firewall rule processing that could improve response times by 12%. Shall I implement these optimizations during the next maintenance window?";
-                } else if (lowerMessage.includes('behavior') || lowerMessage.includes('user')) {
-                    return "Behavioral analysis shows normal patterns across 241 of 243 profiled users. Two anomalies were detected with high confidence scores. The AI has automatically escalated these for review and implemented additional monitoring. Would you like to see the detailed behavioral report?";
-                } else {
-                    return "I understand you're asking about cybersecurity and system operations. As your AI Security Assistant, I can help with threat analysis, compliance status, system optimization, user behavior monitoring, or any other security-related inquiries. Could you please provide more specific details about what you'd like to know?";
-                }
-            },
-            
-            startNewChat: function() {
-                const chatContainer = document.getElementById('nlpChat');
-                chatContainer.innerHTML = `
-                    <div class="chat-message ai-message">
-                        <div>Hello MJ! I'm your AI Security Assistant. I can help you analyze security threats, review compliance status, optimize system performance, or answer any cybersecurity questions you have. What would you like to discuss?</div>
-                        <div class="message-time">AI Assistant • Just now</div>
-                    </div>
-                `;
-            }
-        };
+            // Log marketplace interaction
+            ecosystemEngine.executeEcosystemAction({
+                name: `Marketplace App Preview: ${appId}`,
+                system: 'Marketplace Hub',
+                icon: 'marketplace',
+                description: 'User viewed app details in marketplace'
+            });
+        }
 
         // =============================================
-        // Phase 6 AI Advancement UI Management
+        // Phase 7 Ecosystem Expansion UI Management
         // =============================================
 
         // Theme Management
@@ -1590,64 +1638,40 @@
             document.getElementById(modalId).classList.remove('active');
         }
 
-        // NLP Chat Functions
-        function sendNLPMessage() {
-            const input = document.getElementById('nlpInput');
-            const message = input.value.trim();
-            if (message) {
-                nlpChatSystem.sendMessage(message);
-            }
-        }
-
-        function quickQuestion(question) {
-            document.getElementById('nlpInput').value = question;
-            sendNLPMessage();
-        }
-
-        function startNewChat() {
-            nlpChatSystem.startNewChat();
-        }
-
-        // Allow sending message with Enter key
-        document.getElementById('nlpInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                sendNLPMessage();
-            }
-        });
-
-        // Initialize ZaraAI Phase 6 Complete AI Advancement
-        function initializeZaraAIPhase6() {
-            console.log('🧠 INITIALIZING ZaraAI Phase 6 - Complete AI Advancement');
-            console.log('🤖 Neural Network Systems: ACTIVE (12 Models)');
-            console.log('💬 NLP Engine: OPERATIONAL (8 Languages)');
-            console.log('👤 Behavioral Biometrics: PROFILING (243 Users)');
-            console.log('🔍 AI Threat Intelligence: ANALYZING');
-            console.log('⚡ Cognitive Security: COMPUTING');
-            console.log('🔄 Self-Learning Systems: ADAPTING');
-            console.log('🎯 Machine Learning: 96.2% ACCURACY');
+        // Initialize ZaraAI Phase 7 Complete Ecosystem Expansion
+        function initializeZaraAIPhase7() {
+            console.log('🌐 INITIALIZING ZaraAI Phase 7 - Complete Ecosystem Expansion');
+            console.log('🛒 Marketplace Hub: 127 Apps | 15.2K Users');
+            console.log('🔗 Integration Network: 47 Active Integrations');
+            console.log('📱 Mobile Ecosystem: 8.7K Active Users');
+            console.log('🔧 API Ecosystem: 2.1M Daily Calls');
+            console.log('🤝 Partner Network: 23 Strategic Partners');
+            console.log('🔄 Third-Party Ecosystem: EXPANDED');
+            console.log('💻 Cross-Platform: UNIVERSAL ACCESS');
             
-            // Initialize AI autonomous engine
-            aiAutonomousEngine.startAIOperations();
-            aiAutonomousEngine.updateAIUI();
+            // Initialize ecosystem engine
+            ecosystemEngine.startEcosystemOperations();
+            ecosystemEngine.updateEcosystemMetrics();
             
-            console.log('🎯 ZaraAI Phase 6 Advanced AI Systems Operational');
-            console.log('🧠 Neural networks processing security data...');
-            console.log('💬 NLP engine ready for natural interactions...');
-            console.log('👤 Behavioral AI monitoring user patterns...');
-            console.log('🔍 AI threat intelligence analyzing global threats...');
+            console.log('🎯 ZaraAI Phase 7 Global Ecosystem Operational');
+            console.log('🛒 Marketplace processing app transactions...');
+            console.log('🔗 Integration network syncing services...');
+            console.log('📱 Mobile ecosystem delivering experiences...');
+            console.log('🔧 API gateway handling millions of requests...');
+            console.log('🤝 Partner network expanding capabilities...');
         }
 
-        // Start Complete Phase 6 when page loads
-        document.addEventListener('DOMContentLoaded', initializeZaraAIPhase6);
+        // Start Complete Phase 7 when page loads
+        document.addEventListener('DOMContentLoaded', initializeZaraAIPhase7);
 
-        // Global exports for AI management
-        window.zaraAIAI = aiSystems;
-        window.zaraAIAutonomous = aiAutonomousEngine;
-        window.zaraAINLP = nlpChatSystem;
+        // Global exports for ecosystem management
+        window.zaraAIEcosystem = ecosystemState;
+        window.zaraAIEcosystemEngine = ecosystemEngine;
         window.zaraAIAdmin = {
             showPage: showPage,
             showModal: showModal,
-            closeModal: closeModal
+            closeModal: closeModal,
+            showAppDetails: showAppDetails
         };
     </script>
 </body>
