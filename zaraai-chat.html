@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZaraAI Live Chat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .chat-header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .chat-header p {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .message.user .message-avatar {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .message.ai .message-avatar {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 15px;
+            border-radius: 18px;
+            line-height: 1.4;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border-bottom-right-radius: 5px;
+        }
+
+        .message.ai .message-content {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-bottom-left-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 5px;
+            text-align: right;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .chat-input-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        #chatInput {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            resize: none;
+            font-size: 1rem;
+            line-height: 1.4;
+            transition: border-color 0.3s;
+            max-height: 120px;
+        }
+
+        #chatInput:focus {
+            outline: none;
+            border-color: #8b5cf6;
+        }
+
+        #sendButton {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        #sendButton:hover {
+            transform: translateY(-2px);
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .quick-action {
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quick-action:hover {
+            background: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        .typing-indicator {
+            display: none;
+            padding: 10px 0;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .typing-indicator.active {
+            display: block;
+        }
+
+        .system-status {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>ZaraAI Security Assistant</h1>
+            <p>Powered by Advanced AI • MJ Mashifane (Administrator)</p>
+        </div>
+        
+        <div class="chat-messages" id="chatMessages">
+            <div class="system-status">
+                🟢 ZaraAI System Status: ACTIVE | AI Accuracy: 96.2% | Autonomous Mode: ENABLED
+            </div>
+            
+            <div class="message ai">
+                <div class="message-avatar">AI</div>
+                <div class="message-content">
+                    <div>Hello MJ! I'm ZaraAI, your advanced security and life coaching assistant. I can help you with:</div>
+                    <br>
+                    <div>• 🔐 Security analysis and threat detection</div>
+                    <div>• 📊 System performance optimization</div>
+                    <div>• 📋 Compliance status and reporting</div>
+                    <div>• 👥 Team wellness and behavior analysis</div>
+                    <div>• 🔮 Predictive threat forecasting</div>
+                    <br>
+                    <div>What would you like to discuss today?</div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator">
+            ZaraAI is thinking...
+        </div>
+
+        <div class="chat-input-container">
+            <div class="quick-actions">
+                <div class="quick-action" onclick="quickQuestion('Analyze current security threats')">🔐 Security Analysis</div>
+                <div class="quick-action" onclick="quickQuestion('Compliance status overview')">📋 Compliance Check</div>
+                <div class="quick-action" onclick="quickQuestion('System performance metrics')">📊 Performance</div>
+                <div class="quick-action" onclick="quickQuestion('Team wellness status')">😊 Wellness Check</div>
+            </div>
+            <div class="chat-input-wrapper">
+                <textarea 
+                    id="chatInput" 
+                    placeholder="Ask ZaraAI about security, compliance, performance, or anything else..."
+                    rows="1"
+                ></textarea>
+                <button id="sendButton" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const sendButton = document.getElementById('sendButton');
+
+        // Auto-resize textarea
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        // Send message on Enter (but allow Shift+Enter for new line)
+        chatInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+
+            // Add user message
+            addMessage(message, 'user');
+            chatInput.value = '';
+            chatInput.style.height = 'auto';
+
+            // Show typing indicator
+            typingIndicator.classList.add('active');
+            sendButton.disabled = true;
+
+            // Simulate AI thinking
+            setTimeout(() => {
+                typingIndicator.classList.remove('active');
+                const aiResponse = generateAIResponse(message);
+                addMessage(aiResponse, 'ai');
+                sendButton.disabled = false;
+                scrollToBottom();
+            }, 1500 + Math.random() * 1000); // Random delay between 1.5-2.5 seconds
+        }
+
+        function addMessage(content, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'message-avatar';
+            avatar.textContent = sender === 'user' ? 'MJ' : 'AI';
+            
+            const messageContent = document.createElement('div');
+            messageContent.className = 'message-content';
+            
+            // Convert line breaks to HTML
+            const formattedContent = content.replace(/\n/g, '<br>');
+            messageContent.innerHTML = formattedContent;
+            
+            const timeSpan = document.createElement('div');
+            timeSpan.className = 'message-time';
+            timeSpan.textContent = getCurrentTime();
+            
+            messageContent.appendChild(timeSpan);
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(messageContent);
+            
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function quickQuestion(question) {
+            chatInput.value = question;
+            sendMessage();
+        }
+
+        function generateAIResponse(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+            
+            // Security & Threats
+            if (lowerMessage.includes('security') || lowerMessage.includes('threat') || lowerMessage.includes('attack')) {
+                return `Based on my real-time analysis, here's your security status:
+
+🔒 CURRENT THREAT LEVEL: MEDIUM
+• Blocked 47 suspicious IPs in last 24 hours
+• Detected 12 phishing attempts this week
+• Zero successful breaches this month
+
+🛡️ ACTIVE PROTECTIONS:
+• AI-powered threat detection running at 96.2% accuracy
+• Quantum-safe encryption active across all systems
+• Behavioral anomaly detection monitoring 243 users
+
+🚨 RECOMMENDATIONS:
+1. Review firewall rules for Tenant C (unusual outbound traffic)
+2. Schedule additional phishing training for marketing team
+3. Update threat intelligence feeds with latest IOCs
+
+Would you like me to dive deeper into any specific area?`;
+            }
+
+            // Compliance
+            else if (lowerMessage.includes('compliance') || lowerMessage.includes('audit') || lowerMessage.includes('soc') || lowerMessage.includes('gdpr')) {
+                return `📋 COMPLIANCE STATUS OVERVIEW
+
+✅ SOC2 TYPE II: 95% Compliant
+• 5 controls pending implementation
+• Last audit: 15 days ago
+• Next assessment: Q2 2024
+
+✅ GDPR: 100% Compliant  
+• All data protection requirements met
+• Automated DSAR processing active
+• Cross-border transfers secured
+
+🟡 ISO 27001: 82% Compliant  
+• Certification in progress
+• 12 controls to implement
+• Target completion: Q4 2024
+
+✅ HIPAA: 98% Compliant (Tenant B)
+• Healthcare data fully secured
+• 2 controls pending review
+
+🔒 All compliance reports are automatically generated and available for download.`;
+            }
+
+            // Performance
+            else if (lowerMessage.includes('performance') || lowerMessage.includes('optimize') || lowerMessage.includes('system')) {
+                return `⚡ SYSTEM PERFORMANCE METRICS
+
+🎯 OVERALL HEALTH: EXCELLENT (99.2% Uptime)
+• Response time: 142ms average
+• API success rate: 99.98%
+• Database performance: Optimal
+
+📈 KEY METRICS:
+• CPU Utilization: 42% (Normal)
+• Memory Usage: 68% (Healthy)
+• Network Throughput: 2.1Gbps
+• Storage I/O: 12K IOPS
+
+🔄 RECENT OPTIMIZATIONS:
+• Quantum encryption reduced latency by 23%
+• AI caching improved response times by 18%
+• Load balancing optimized across 5 regions
+
+💡 RECOMMENDATIONS:
+1. Consider scaling database for Tenant A (approaching capacity)
+2. Optimize firewall rules for 8% performance gain
+3. Schedule maintenance window for Q1 updates`;
+            }
+
+            // Wellness
+            else if (lowerMessage.includes('wellness') || lowerMessage.includes('stress') || lowerMessage.includes('team')) {
+                return `😊 TEAM WELLNESS ANALYSIS
+
+📊 OVERALL WELLNESS SCORE: 86% (Healthy)
+
+👥 DEPARTMENT BREAKDOWN:
+• Engineering: 82% (Moderate stress - project deadlines)
+• Marketing: 91% (Optimal - good work-life balance)
+• Sales: 78% (Elevated - quarter-end pressure)
+• Security: 88% (Good - stable workload)
+
+🎯 WELLNESS TRENDS:
+• 12% improvement in overall score this quarter
+• 23% reduction in stress-related incidents
+• 45 team members completed wellness programs
+
+💡 RECOMMENDATIONS:
+1. Schedule wellness workshops for engineering team
+2. Implement flexible hours for sales during quarter-end
+3. Continue current wellness initiatives (showing positive results)
+
+Would you like me to schedule any wellness interventions?`;
+            }
+
+            // Predictive Analysis
+            else if (lowerMessage.includes('predict') || lowerMessage.includes('forecast') || lowerMessage.includes('future')) {
+                return `🔮 PREDICTIVE THREAT INTELLIGENCE
+
+📅 24-HOUR THREAT FORECAST:
+• HIGH probability of targeted phishing campaigns
+• MEDIUM risk of credential stuffing attacks
+• LOW chance of DDoS attacks
+
+🎯 BEHAVIORAL PREDICTIONS:
+• Team productivity expected to increase 8% this week
+• Security awareness likely to improve based on training metrics
+• 92% confidence in stable system performance
+
+🛡️ PREPAREDNESS:
+• AI models updated with latest threat intelligence
+• Defense systems calibrated for predicted attack vectors
+• Incident response team on standby
+
+🔍 CONTINUOUS MONITORING:
+All predictive models are actively learning and will alert you of any significant changes.`;
+            }
+
+            // General Help
+            else if (lowerMessage.includes('help') || lowerMessage.includes('what can you do')) {
+                return `I'm ZaraAI, your comprehensive security and operations assistant! Here's what I can help you with:
+
+🔐 SECURITY OPERATIONS
+• Real-time threat analysis and monitoring
+• Vulnerability assessment and management
+• Incident response coordination
+• Security policy enforcement
+
+📊 SYSTEM MANAGEMENT  
+• Performance optimization and monitoring
+• Capacity planning and scaling
+• Maintenance scheduling
+• Resource allocation
+
+📋 COMPLIANCE & GOVERNANCE
+• Regulatory compliance tracking
+• Audit preparation and reporting
+• Policy management
+• Risk assessment
+
+👥 PEOPLE ANALYTICS
+• Team wellness and stress monitoring
+• Behavioral pattern analysis
+• Training effectiveness tracking
+• Productivity optimization
+
+🔮 PREDICTIVE INTELLIGENCE
+• Threat forecasting
+• Performance predictions
+• Risk probability scoring
+• Trend analysis
+
+Just ask me anything about these areas, and I'll provide detailed, actionable insights!`;
+            }
+
+            // Default response
+            else {
+                return `I understand you're asking about "${userMessage}". 
+
+As ZaraAI, I specialize in cybersecurity, system performance, compliance, and team wellness. I can provide you with:
+
+• Detailed security analysis and threat assessment
+• Real-time system performance metrics  
+• Compliance status and audit readiness
+• Team wellness insights and recommendations
+• Predictive forecasts for threats and performance
+
+Could you please be more specific about what you'd like to know? For example, you could ask:
+
+• "What's our current security threat level?"
+• "How is system performance today?"
+• "Show me compliance status for SOC2"
+• "What's the team wellness score?"
+• "Predict threats for the next 48 hours"
+
+I'm here to help you make informed decisions!`;
+            }
+        }
+
+        function getCurrentTime() {
+            return new Date().toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Initial scroll to bottom
+        scrollToBottom();
+    </script>
+</body>
+</html>
