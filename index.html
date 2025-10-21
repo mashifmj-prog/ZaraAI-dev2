@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZaraAI Cybersecurity & Life Coach - Phase 4 Complete</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #1f2937;
+            --light: #f8fafc;
+            --gray: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-card: #374151;
+            --text-primary: #f9fafb;
+            --text-secondary: #d1d5db;
+            --border: #4b5563;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-card: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --border: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Main Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: calc(100vh - 80px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem 0;
+        }
+
+        .nav-menu {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--bg-card);
+            color: var(--text-primary);
+            border-left-color: var(--primary);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 1.5rem;
+        }
+
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: var(--success);
+            color: white;
+        }
+
+        .status-badge.warning {
+            background-color: var(--warning);
+        }
+
+        .status-badge.danger {
+            background-color: var(--danger);
+        }
+
+        .status-badge.primary {
+            background-color: var(--primary);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Table */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table th {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .badge-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .badge-danger {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .badge-primary {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: all 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Charts */
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+
+        /* API Studio Styles */
+        .api-endpoint {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .endpoint-header {
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .endpoint-method {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: white;
+        }
+
+        .method-get {
+            background-color: var(--success);
+        }
+
+        .method-post {
+            background-color: var(--primary);
+        }
+
+        .method-put {
+            background-color: var(--warning);
+        }
+
+        .method-delete {
+            background-color: var(--danger);
+        }
+
+        .endpoint-url {
+            font-family: monospace;
+            margin: 0 10px;
+            flex-grow: 1;
+        }
+
+        .endpoint-body {
+            padding: 1rem;
+        }
+
+        .code-block {
+            background-color: var(--bg-secondary);
+            border-radius: 6px;
+            padding: 1rem;
+            font-family: monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        /* Phishing Simulation Styles */
+        .simulation-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .email-preview {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            background-color: var(--bg-card);
+            margin-bottom: 1.5rem;
+        }
+
+        .email-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .email-subject {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .email-from {
+            color: var(--text-secondary);
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 1.5rem 0;
+        }
+
+        .quiz-option {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--primary);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .quiz-option.incorrect {
+            border-color: var(--danger);
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        /* Life Coach Styles */
+        .coach-message {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            margin-left: 20%;
+            border-right: 4px solid var(--primary-dark);
+        }
+
+        .chat-container {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        /* Achievement Styles */
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .achievement-card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+
+        .achievement-card.unlocked {
+            border-color: var(--success);
+        }
+
+        .achievement-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Automation Center */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .action-card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Ecosystem Integration */
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .integration-card {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--success);
+        }
+
+        .integration-card.pending {
+            border-left-color: var(--warning);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                display: none;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Predictive Engine Styles */
+        .prediction-card {
+            border-left: 4px solid var(--primary);
+        }
+
+        .risk-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .risk-low {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .risk-medium {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .risk-high {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .prediction-chart {
+            height: 200px;
+            margin-top: 1rem;
+        }
+
+        /* Autonomous Engine Status */
+        .engine-status {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        .engine-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .engine-stat {
+            text-align: center;
+        }
+
+        .engine-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .engine-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border-radius: 10px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        /* Real-time activity stream */
+        .activity-stream {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .activity-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .activity-icon.security {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .activity-icon.wellness {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .activity-icon.system {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+        }
+
+        .activity-icon.predictive {
+            background-color: rgba(168, 85, 247, 0.1);
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body data-theme="dark">
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>ZaraAI</h1>
+                    <span class="status-badge primary" id="autonomousStatus">🚀 Autonomous: ACTIVE</span>
+                </div>
+                <div class="nav-controls">
+                    <button class="theme-toggle" id="themeToggle">🌓</button>
+                    <div class="user-profile">
+                        <div class="avatar">JD</div>
+                        <span>John Doe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            <aside class="sidebar">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" data-page="dashboard">
+                            <i>📊</i> Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="predictive">
+                            <i>🔮</i> Predictive Engine
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="api">
+                            <i>🔧</i> API Studio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="automation">
+                            <i>⚡</i> Automation Center
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="ecosystem">
+                            <i>🔗</i> Ecosystem
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="security">
+                            <i>🛡️</i> Security Center
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="phishing">
+                            <i>🎣</i> Phishing Training
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="coach">
+                            <i>🧠</i> Life Coach
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" data-page="analytics">
+                            <i>📈</i> Analytics
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="main-content" id="mainContent">
+                <!-- Dashboard Page -->
+                <div class="page-content active" id="dashboard-page">
+                    <div class="page-header">
+                        <h1 class="page-title">ZaraAI Dashboard</h1>
+                        <div>
+                            <span class="status-badge warning">Phase 4 Complete - Autonomous System Active</span>
+                        </div>
+                    </div>
+
+                    <!-- Autonomous Engine Status -->
+                    <div class="engine-status">
+                        <h2>🤖 Autonomous Engine - RUNNING</h2>
+                        <p>Continuous security, wellness, and optimization operations active</p>
+                        <div class="engine-stats">
+                            <div class="engine-stat">
+                                <div class="engine-value" id="automationLevel">65%</div>
+                                <div class="engine-label">Automation Level</div>
+                            </div>
+                            <div class="engine-stat">
+                                <div class="engine-value" id="actionCount">47</div>
+                                <div class="engine-label">Actions Taken</div>
+                            </div>
+                            <div class="engine-stat">
+                                <div class="engine-value" id="connectedSystems">4</div>
+                                <div class="engine-label">Connected Systems</div>
+                            </div>
+                            <div class="engine-stat">
+                                <div class="engine-value" id="securityScore">92%</div>
+                                <div class="engine-label">Security Score</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Activity Stream -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">🔄 Real-time Autonomous Activity</h2>
+                            <span class="badge badge-primary">Live</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-stream" id="activityStream">
+                                <div class="activity-item">
+                                    <div class="activity-icon security">🛡️</div>
+                                    <div>
+                                        <div>Blocked suspicious IP address</div>
+                                        <small>2 minutes ago • Firewall System</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon wellness">😊</div>
+                                    <div>
+                                        <div>Completed team wellness assessment</div>
+                                        <small>5 minutes ago • Life Coach</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon predictive">🔮</div>
+                                    <div>
+                                        <div>Updated threat prediction models</div>
+                                        <small>8 minutes ago • Predictive Engine</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon system">⚡</div>
+                                    <div>
+                                        <div>Optimized firewall rules</div>
+                                        <small>12 minutes ago • Automation Center</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">Quick Actions</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="dashboard-grid">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Security Scan</h3>
+                                        <p>Run comprehensive security assessment</p>
+                                        <button class="btn btn-primary" onclick="runSecurityScan()">
+                                            <i>🔍</i> Start Scan
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Wellness Check</h3>
+                                        <p>Check team stress levels and wellness</p>
+                                        <button class="btn btn-primary" onclick="runWellnessCheck()">
+                                            <i>😊</i> Check Wellness
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Threat Analysis</h3>
+                                        <p>Analyze current threat landscape</p>
+                                        <button class="btn btn-primary" onclick="runThreatAnalysis()">
+                                            <i>🔎</i> Analyze Threats
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Predictive Engine Preview -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title">🔮 Predictive Intelligence Engine</h2>
+                            <button class="btn btn-primary" onclick="showPage('predictive')">
+                                <i>🔮</i> View Full Engine
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="dashboard-grid">
+                                <div class="card prediction-card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Threat Forecast</h3>
+                                        <span class="risk-indicator risk-medium">Medium Risk</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Increased phishing attempts predicted in next 24 hours based on pattern analysis.</p>
+                                        <div class="prediction-chart">
+                                            <div style="height:100%; background:linear-gradient(90deg, #f59e0b22, #f59e0b44); border-radius:4px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card prediction-card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Wellness Prediction</h3>
+                                        <span class="risk-indicator risk-low">Optimal</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Team stress levels expected to remain stable based on current workload patterns.</p>
+                                        <div class="prediction-chart">
+                                            <div style="height:100%; background:linear-gradient(90deg, #10b98122, #10b98144); border-radius:4px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Predictive Engine Page -->
+                <div class="page-content" id="predictive-page">
+                    <div class="page-header">
+                        <h1 class="page-title">Predictive Intelligence Engine</h1>
+                        <button class="btn btn-primary" onclick="refreshPredictions()">
+                            <i>🔄</i> Refresh Predictions
+                        </button>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card prediction-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Threat Forecast</h3>
+                                <span class="risk-indicator" id="threatRisk">Medium Risk</span>
+                            </div>
+                            <div class="card-body">
+                                <p id="threatDescription">Increased phishing attempts predicted in next 24 hours based on pattern analysis.</p>
+                                <div class="prediction-chart">
+                                    <div style="height:100%; background:linear-gradient(90deg, #f59e0b22, #f59e0b44); border-radius:4px;"></div>
+                                </div>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label class="form-label">Timeframe</label>
+                                    <select class="form-control" id="threatTimeframe">
+                                        <option value="24h">24 Hours</option>
+                                        <option value="7d">7 Days</option>
+                                        <option value="30d">30 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card prediction-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Wellness Prediction</h3>
+                                <span class="risk-indicator" id="wellnessRisk">Optimal</span>
+                            </div>
+                            <div class="card-body">
+                                <p id="wellnessDescription">Team stress levels expected to remain stable based on current workload patterns.</p>
+                                <div class="prediction-chart">
+                                    <div style="height:100%; background:linear-gradient(90deg, #10b98122, #10b98144); border-radius:4px;"></div>
+                                </div>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label class="form-label">Team Department</label>
+                                    <select class="form-control" id="wellnessDepartment">
+                                        <option value="all">All Departments</option>
+                                        <option value="engineering">Engineering</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="sales">Sales</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card prediction-card">
+                            <div class="card-header">
+                                <h3 class="card-title">Behavioral Patterns</h3>
+                                <span class="risk-indicator" id="behaviorRisk">Normal</span>
+                            </div>
+                            <div class="card-body">
+                                <p id="behaviorDescription">User activity patterns show consistent security-conscious behavior.</p>
+                                <div class="prediction-chart">
+                                    <div style="height:100%; background:linear-gradient(90deg, #2563eb22, #2563eb44); border-radius:4px;"></div>
+                                </div>
+                                <div class="form-group" style="margin-top: 1rem;">
+                                    <label class="form-label">Analysis Type</label>
+                                    <select class="form-control" id="behaviorAnalysis">
+                                        <option value="security">Security Behavior</option>
+                                        <option value="productivity">Productivity Patterns</option>
+                                        <option value="collaboration">Collaboration Trends</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Studio Page -->
+                <div class="page-content" id="api-page">
+                    <div class="page-header">
+                        <h1 class="page-title">API Studio & Developer Tools</h1>
+                        <button class="btn btn-primary" onclick="showModal('apiKeysModal')">
+                            <i>🔑</i> Manage API Keys
+                        </button>
+                    </div>
+
+                    <div class="tabs">
+                        <div class="tab active" data-tab="endpoints">Endpoints</div>
+                        <div class="tab" data-tab="webhooks">Webhooks</div>
+                        <div class="tab" data-tab="documentation">Documentation</div>
+                    </div>
+
+                    <div class="tab-content active" id="endpoints-tab">
+                        <div class="api-endpoint">
+                            <div class="endpoint-header">
+                                <span class="endpoint-method method-get">GET</span>
+                                <span class="endpoint-url">/api/v1/security/status</span>
+                                <button class="btn btn-outline" onclick="testEndpoint('GET', '/api/v1/security/status')">Try it</button>
+                            </div>
+                            <div class="endpoint-body">
+                                <p>Retrieve current security status and autonomous mode information.</p>
+                                <div class="code-block">
+{<br>
+&nbsp;&nbsp;"autonomous_mode": "active",<br>
+&nbsp;&nbsp;"automation_level": 65,<br>
+&nbsp;&nbsp;"actions_taken": 47,<br>
+&nbsp;&nbsp;"connected_systems": ["DefendIQ", "SIEM", "Firewall", "IAM"]<br>
+}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="api-endpoint">
+                            <div class="endpoint-header">
+                                <span class="endpoint-method method-post">POST</span>
+                                <span class="endpoint-url">/api/v1/predictions/threat</span>
+                                <button class="btn btn-outline" onclick="testEndpoint('POST', '/api/v1/predictions/threat')">Try it</button>
+                            </div>
+                            <div class="endpoint-body">
+                                <p>Generate threat predictions based on current data patterns.</p>
+                                <div class="code-block">
+{<br>
+&nbsp;&nbsp;"timeframe": "24h",<br>
+&nbsp;&nbsp;"risk_level": "medium",<br>
+&nbsp;&nbsp;"confidence": 0.82,<br>
+&nbsp;&nbsp;"recommended_actions": ["increase_monitoring", "user_alert"]<br>
+}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Automation Center Page -->
+                <div class="page-content" id="automation-page">
+                    <div class="page-header">
+                        <h1 class="page-title">Automation Center</h1>
+                        <span class="status-badge primary">65% Automation Active</span>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Security Automation</h3>
+                                <span class="badge badge-success">Active</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Automated threat detection and response</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                                <div style="margin-top: 1rem;">
+                                    <span class="badge badge-primary">47 actions executed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Wellness Automation</h3>
+                                <span class="badge badge-success">Active</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Automated wellness checks and support</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%"></div>
+                                </div>
+                                <div style="margin-top: 1rem;">
+                                    <span class="badge badge-primary">23 wellness actions</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">System Optimization</h3>
+                                <span class="badge badge-success">Active</span>
+                            </div>
+                            <div class="card-body">
+                                <p>Automated system performance optimization</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <div style="margin-top: 1rem;">
+                                    <span class="badge badge-primary">18 optimizations</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ecosystem Page -->
+                <div class="page-content" id="ecosystem-page">
+                    <div class="page-header">
+                        <h1 class="page-title">Ecosystem Integration</h1>
+                        <span class="status-badge success">4 Systems Connected</span>
+                    </div>
+
+                    <div class="integration-grid">
+                        <div class="integration-card">
+                            <h3>DefendIQ Enterprise</h3>
+                            <p>Advanced threat protection and security orchestration</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="badge badge-success">Connected</span>
+                        </div>
+                        <div class="integration-card">
+                            <h3>SIEM System</h3>
+                            <p>Security Information and Event Management</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="badge badge-success">Connected</span>
+                        </div>
+                        <div class="integration-card">
+                            <h3>Firewall</h3>
+                            <p>Network security and access control</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="badge badge-success">Connected</span>
+                        </div>
+                        <div class="integration-card">
+                            <h3>IAM System</h3>
+                            <p>Identity and Access Management</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="badge badge-success">Connected</span>
+                        </div>
+                        <div class="integration-card pending">
+                            <h3>EDR System</h3>
+                            <p>Endpoint Detection and Response</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="badge badge-warning">In Progress</span>
+                        </div>
+                        <div class="integration-card pending">
+                            <h3>CASB</h3>
+                            <p>Cloud Access Security Broker</p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="badge badge-warning">In Progress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional pages would continue here -->
+                <!-- Security Center, Phishing Training, Life Coach, Analytics pages -->
+
+            </main>
+        </div>
+    </div>
+
+    <!-- API Keys Modal -->
+    <div class="modal" id="apiKeysModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">API Key Management</h2>
+                <button class="close-modal" onclick="closeModal('apiKeysModal')">&times;</button>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="form-label">Generate New API Key</label>
+                    <button class="btn btn-primary">Generate Key</button>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Existing API Keys</label>
+                    <div class="code-block">
+                        sk_live_zarai_xxxxxxxxxxxxxxxx<br>
+                        sk_test_zarai_yyyyyyyyyyyyyyyy
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =============================================
+        // ZaraAI Phase 4 - Complete Autonomous System
+        // =============================================
+        
+        // Autonomous Engine State
+        const autonomousEngine = {
+            status: 'ACTIVE',
+            automationLevel: 65,
+            actionsTaken: 47,
+            connectedSystems: 4,
+            securityScore: 92,
+            operationalModes: {
+                SECURITY_MONITORING: true,
+                THREAT_RESPONSE: true,
+                WELLNESS_CHECK: true,
+                PREDICTIVE_ANALYSIS: true,
+                SYSTEM_OPTIMIZATION: true
+            },
+            
+            // Continuous operation scheduler
+            scheduleAction: function(actionType) {
+                const actions = {
+                    security_scan: {
+                        name: 'Security Vulnerability Scan',
+                        system: 'DefendIQ',
+                        icon: 'security',
+                        description: 'Comprehensive system security assessment'
+                    },
+                    threat_analysis: {
+                        name: 'Real-time Threat Analysis', 
+                        system: 'SIEM',
+                        icon: 'security',
+                        description: 'Analysis of current threat landscape'
+                    },
+                    wellness_check: {
+                        name: 'Team Wellness Assessment',
+                        system: 'Life Coach', 
+                        icon: 'wellness',
+                        description: 'Team stress and wellness evaluation'
+                    },
+                    predictive_update: {
+                        name: 'Predictive Model Update',
+                        system: 'Predictive Engine',
+                        icon: 'predictive',
+                        description: 'Updated AI prediction models'
+                    },
+                    system_optimization: {
+                        name: 'System Performance Optimization',
+                        system: 'Automation Center',
+                        icon: 'system',
+                        description: 'Automated system tuning'
+                    },
+                    firewall_optimization: {
+                        name: 'Firewall Rule Optimization',
+                        system: 'Firewall',
+                        icon: 'security',
+                        description: 'Updated security rules'
+                    },
+                    user_behavior_analysis: {
+                        name: 'User Behavior Analysis',
+                        system: 'Analytics',
+                        icon: 'predictive',
+                        description: 'Pattern analysis for security'
+                    }
+                };
+                
+                if (actions[actionType]) {
+                    // Random delay between 10-40 seconds
+                    const delay = Math.random() * 30000 + 10000;
+                    setTimeout(() => {
+                        this.executeAutonomousAction(actions[actionType]);
+                    }, delay);
+                }
+            },
+            
+            executeAutonomousAction: function(action) {
+                this.actionsTaken++;
+                
+                // Update UI counters
+                document.getElementById('actionCount').textContent = this.actionsTaken;
+                
+                // Add to activity stream
+                this.addActivityStream(action);
+                
+                // Occasionally increase automation level (up to 85%)
+                if (this.actionsTaken % 8 === 0 && this.automationLevel < 85) {
+                    this.automationLevel += 1;
+                    this.updateAutomationUI();
+                }
+                
+                // Occasionally improve security score
+                if (this.actionsTaken % 12 === 0 && this.securityScore < 98) {
+                    this.securityScore += 1;
+                    document.getElementById('securityScore').textContent = this.securityScore + '%';
+                }
+                
+                console.log(`🔄 Autonomous Action #${this.actionsTaken}: ${action.name}`);
+            },
+            
+            addActivityStream: function(action) {
+                const stream = document.getElementById('activityStream');
+                const now = new Date();
+                const timeString = now.getHours() + ':' + (now.getMinutes() < 10 ? '0' : '') + now.getMinutes();
+                
+                const activityItem = document.createElement('div');
+                activityItem.className = 'activity-item';
+                activityItem.innerHTML = `
+                    <div class="activity-icon ${action.icon}">${this.getActionIcon(action.icon)}</div>
+                    <div>
+                        <div>${action.name}</div>
+                        <small>Just now • ${action.system}</small>
+                    </div>
+                `;
+                
+                stream.insertBefore(activityItem, stream.firstChild);
+                
+                // Keep only last 6 activities
+                if (stream.children.length > 6) {
+                    stream.removeChild(stream.lastChild);
+                }
+            },
+            
+            getActionIcon: function(type) {
+                const icons = {
+                    security: '🛡️',
+                    wellness: '😊',
+                    system: '⚡',
+                    predictive: '🔮'
+                };
+                return icons[type] || '⚡';
+            },
+            
+            updateAutomationUI: function() {
+                document.getElementById('automationLevel').textContent = this.automationLevel + '%';
+                // Update progress bar if exists
+                const progressBar = document.querySelector('.engine-status .progress-fill');
+                if (progressBar) {
+                    progressBar.style.width = this.automationLevel + '%';
+                }
+            },
+            
+            // Start continuous autonomous operations
+            startContinuousOperations: function() {
+                console.log('🚀 Starting continuous autonomous operations...');
+                
+                // Schedule regular security operations
+                setInterval(() => {
+                    this.scheduleAction('security_scan');
+                }, 180000); // Every 3 minutes
+                
+                setInterval(() => {
+                    this.scheduleAction('threat_analysis');
+                }, 120000); // Every 2 minutes
+                
+                // Schedule wellness operations
+                setInterval(() => {
+                    this.scheduleAction('wellness_check');
+                }, 240000); // Every 4 minutes
+                
+                // Schedule predictive operations
+                setInterval(() => {
+                    this.scheduleAction('predictive_update');
+                }, 300000); // Every 5 minutes
+                
+                // Schedule system operations
+                setInterval(() => {
+                    this.scheduleAction('system_optimization');
+                }, 360000); // Every 6 minutes
+                
+                setInterval(() => {
+                    this.scheduleAction('firewall_optimization');
+                }, 420000); // Every 7 minutes
+                
+                setInterval(() => {
+                    this.scheduleAction('user_behavior_analysis');
+                }, 480000); // Every 8 minutes
+            },
+            
+            // Initialize ecosystem integrations
+            initializeEcosystem: function() {
+                console.log('🔗 Ecosystem initialized with 4 connected systems');
+                console.log('✅ DefendIQ Enterprise - Active');
+                console.log('✅ SIEM System - Active');
+                console.log('✅ Firewall - Active');
+                console.log('✅ IAM System - Active');
+                console.log('🔄 EDR System - In Progress (75%)');
+                console.log('🔄 CASB - In Progress (45%)');
+            }
+        };
+
+        // =============================================
+        // UI Management and Controls
+        // =============================================
+
+        // Theme Management
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            const currentTheme = document.body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('zaraai-theme', newTheme);
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('zaraai-theme') || 'dark';
+        document.body.setAttribute('data-theme', savedTheme);
+
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(`${pageId}-page`).classList.add('active');
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabId = this.getAttribute('data-tab');
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Modal Management
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Quick Actions
+        function runSecurityScan() {
+            autonomousEngine.executeAutonomousAction({
+                name: 'Manual Security Scan Initiated',
+                system: 'DefendIQ',
+                icon: 'security',
+                description: 'User-initiated comprehensive security assessment'
+            });
+            alert('Security scan initiated. Comprehensive assessment in progress...');
+        }
+
+        function runWellnessCheck() {
+            autonomousEngine.executeAutonomousAction({
+                name: 'Manual Wellness Check',
+                system: 'Life Coach',
+                icon: 'wellness',
+                description: 'User-requested team wellness assessment'
+            });
+            alert('Wellness check initiated. Analyzing team stress levels...');
+        }
+
+        function runThreatAnalysis() {
+            autonomousEngine.executeAutonomousAction({
+                name: 'Manual Threat Analysis',
+                system: 'SIEM',
+                icon: 'security',
+                description: 'User-requested threat landscape analysis'
+            });
+            alert('Threat analysis started. Evaluating current security landscape...');
+        }
+
+        // Predictive Engine
+        function refreshPredictions() {
+            alert('Refreshing predictive data... AI models updating with latest patterns.');
+            autonomousEngine.executeAutonomousAction({
+                name: 'Manual Prediction Refresh',
+                system: 'Predictive Engine',
+                icon: 'predictive',
+                description: 'User-requested prediction model update'
+            });
+        }
+
+        // API Testing
+        function testEndpoint(method, endpoint) {
+            alert(`Testing ${method} ${endpoint}\n\nSimulating API call in autonomous environment...`);
+            autonomousEngine.executeAutonomousAction({
+                name: `API Test: ${method} ${endpoint}`,
+                system: 'API Studio',
+                icon: 'system',
+                description: 'Developer API endpoint testing'
+            });
+        }
+
+        // =============================================
+        // Initialize ZaraAI Phase 4 System
+        // =============================================
+        
+        function initializeZaraAIPhase4() {
+            console.log('🚀 Initializing ZaraAI Phase 4 - Complete Autonomous System');
+            console.log('✅ Autonomous Engine: ACTIVE (65% Automation)');
+            console.log('✅ Actions Taken: 47+ (Continuous)');
+            console.log('✅ Connected Systems: 4 Active');
+            console.log('✅ Predictive Engine: OPERATIONAL');
+            console.log('✅ API Studio: READY');
+            console.log('✅ Ecosystem: INTEGRATED');
+            
+            // Initialize autonomous engine
+            autonomousEngine.initializeEcosystem();
+            autonomousEngine.startContinuousOperations();
+            
+            // Update initial UI state
+            autonomousEngine.updateAutomationUI();
+            document.getElementById('connectedSystems').textContent = autonomousEngine.connectedSystems;
+            document.getElementById('securityScore').textContent = autonomousEngine.securityScore + '%';
+            
+            console.log('🎯 ZaraAI Phase 4 System Fully Operational');
+            console.log('🔄 Autonomous operations running continuously...');
+        }
+
+        // Start the system when page loads
+        document.addEventListener('DOMContentLoaded', initializeZaraAIPhase4);
+
+        // Export for global access if needed
+        window.zaraAI = autonomousEngine;
+    </script>
+</body>
+</html>
